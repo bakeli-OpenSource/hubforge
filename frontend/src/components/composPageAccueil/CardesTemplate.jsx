@@ -50,6 +50,7 @@ export const CardesTemplate = ({
       >
         <Link
           to={telechargeLink}
+          target="_blank"
           className="bg-blue-950 mt-5 hover:scale-105 transition-all
            duration-500 text-blanc pb-1 text-md rounded-full flex items-center h-[37px] px-5"
         >
