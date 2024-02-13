@@ -35,9 +35,9 @@ export default function NavTemp2() {
                 className="flex items-center space-x-2 px-0"
               >
                 <div className="h-4 w-4 rounded-full bg-gray-900 dark:bg-white"></div>
-                <div className="h-6 w-2 bg-purple-500"></div>
+                <div className="h-6 w-2 bg-blue-500"></div>
                 <span className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Astrolus
+                  ProManage
                 </span>
               </a>
             </div>
@@ -109,7 +109,7 @@ export default function NavTemp2() {
               <div className="flex items-center gap-4">
                 <div className="sm:flex sm:gap-4">
                   <a
-                    className="rounded-3xl bg-purple-500 px-5 py-2.5 text-sm font-medium text-white shadow"
+                    className="rounded-3xl bg-blue-500 px-5 py-2.5 text-sm font-medium text-white shadow"
                     href="#"
                   >
                     Get started

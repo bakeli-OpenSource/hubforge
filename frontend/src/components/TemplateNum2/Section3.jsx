@@ -92,7 +92,7 @@ export default function Section3({sec3}) {
           <div className="mt-10 max-sm:gap-2">
             <a
               href="#"
-              className=" inline-block rounded-3xl bg-purple-500 px-8 py-3 text-sm font-medium text-white transition  focus:outline-none focus:ring focus:ring-yellow-400"
+              className=" inline-block rounded-3xl bg-blue-500 px-8 py-3 text-sm font-medium text-white transition  focus:outline-none focus:ring focus:ring-yellow-400"
             >
               Get Started
             </a>
