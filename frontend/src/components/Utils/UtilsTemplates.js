@@ -59,10 +59,11 @@ export const CardsTemplateContenu2 = [
   },
 
   {
-    HandlePreview: "/template2",
+    HandlePreview: "https://cheikh-ahmed-tidiane-gueye.github.io/food/",
     handleBuy:
       "https://github.com/barrymamadou12345/HubForgeTEMPLATES/archive/refs/heads/Food.zip",
-    handleDownloadHtml: "",
+    handleDownloadHtml:
+      "https://github.com/Cheikh-Ahmed-Tidiane-Gueye/food/archive/refs/heads/TelechargerFood.zip",
     imageTemplate: Template2,
     fonCardTemplate: "bg-[#f8d7032f]",
     titreCrdTemplate: " Food Delivred",
@@ -72,11 +73,11 @@ export const CardsTemplateContenu2 = [
     telechargeLink: "/telecharge/template2",
   },
   {
-    HandlePreview: "/template3",
+    HandlePreview: "https://kessoba.github.io/Lecturama/",
     handleBuy:
       "https://github.com/barrymamadou12345/HubForgeTEMPLATES/archive/refs/heads/Lecturama.zip",
     handleDownloadHtml:
-      "https://github.com/kessoba/Lecturama/archive/refs/heads/main.zip",
+      "https://github.com/kessoba/Lecturama/archive/refs/heads/t%C3%A9l%C3%A9charger.zip",
     imageTemplate: Template3,
     fonCardTemplate: "bg-[#f81b032f]",
     titreCrdTemplate: " Lecturama",
@@ -87,12 +88,14 @@ export const CardsTemplateContenu2 = [
   },
 
   {
-    HandlePreview: "/template4",
-    handleBuy: "",
-    handleDownloadHtml: "",
+    HandlePreview: "https://kessoba.github.io/Promanage/",
+    handleBuy:
+      "https://github.com/barrymamadou12345/HubForgeTEMPLATES/archive/refs/heads/ProManage.zip",
+    handleDownloadHtml:
+      "https://github.com/kessoba/Promanage/archive/refs/heads/t%C3%A9l%C3%A9charger.zip",
     imageTemplate: Template4,
     fonCardTemplate: "bg-[#7c88cc60]",
-    titreCrdTemplate: " Astrolus",
+    titreCrdTemplate: " ProManage",
     DesctiptionTemplate: "Modern Marketing - startup complete website",
     prixTemplate: <p className="text-green-700 font-bold ">Free</p>,
     handlePriceTo: "",
@@ -100,23 +103,25 @@ export const CardsTemplateContenu2 = [
   },
 
   {
-    HandlePreview: "/template5",
-    handleBuy: "",
+    HandlePreview: "https://cheikh-ahmed-tidiane-gueye.github.io/Aria/",
+    handleBuy:
+      "https://github.com/barrymamadou12345/HubForgeTEMPLATES/archive/refs/heads/ClaireObscure.zip",
     handleDownloadHtml:
-      "https://github.com/Cheikh-Ahmed-Tidiane-Gueye/Aria/archive/refs/heads/main.zip",
+      "https://github.com/Cheikh-Ahmed-Tidiane-Gueye/Aria/archive/refs/heads/TelechargerAria.zip",
     imageTemplate: Template5,
     fonCardTemplate: "bg-[#7cc9cc60]",
-    titreCrdTemplate: " Aria",
+    titreCrdTemplate: " ClaireObscure",
     DesctiptionTemplate: "Modern Sass - Marketing landing page",
     prixTemplate: <p className="text-green-700 font-bold ">Free</p>,
     handlePriceTo: "",
     telechargeLink: "/telecharge/template5",
   },
   {
-    HandlePreview: "/template6",
-    handleBuy: "",
+    HandlePreview: "https://cheikh-ahmed-tidiane-gueye.github.io/Ampire/",
+    handleBuy:
+      "https://github.com/barrymamadou12345/HubForgeTEMPLATES/archive/refs/heads/Ampire.zip",
     handleDownloadHtml:
-      "https://github.com/Cheikh-Ahmed-Tidiane-Gueye/Ampire/archive/refs/heads/main.zip",
+      "https://github.com/Cheikh-Ahmed-Tidiane-Gueye/Ampire/archive/refs/heads/TelechargerAmpire.zip",
     imageTemplate: Template6,
     fonCardTemplate: "bg-[#cc7cc740]",
     titreCrdTemplate: " Ampire ",
@@ -126,11 +131,11 @@ export const CardsTemplateContenu2 = [
     telechargeLink: "/telecharge/template6",
   },
   {
-    HandlePreview: "/template7",
+    HandlePreview: "https://kessoba.github.io/changelly/",
     handleBuy:
       "https://github.com/barrymamadou12345/HubForgeTEMPLATES/archive/refs/heads/Changelly.zip",
     handleDownloadHtml:
-      "https://github.com/kessoba/changelly/archive/refs/heads/main.zip",
+      "https://github.com/kessoba/changelly/archive/refs/heads/t%C3%A9l%C3%A9charger.zip",
     imageTemplate: Template15,
     fonCardTemplate: "bg-[#008cff2f]",
     titreCrdTemplate: " Changelly",
@@ -141,13 +146,14 @@ export const CardsTemplateContenu2 = [
   },
 
   {
-    HandlePreview: "/template8",
-    handleBuy: "",
+    HandlePreview: "https://cheikh-ahmed-tidiane-gueye.github.io/ALT/",
+    handleBuy:
+      "https://github.com/barrymamadou12345/HubForgeTEMPLATES/archive/refs/heads/CreativeDesign.zip",
     handleDownloadHtml:
-      "https://github.com/Cheikh-Ahmed-Tidiane-Gueye/ALT/archive/refs/heads/main.zip",
+      "https://github.com/Cheikh-Ahmed-Tidiane-Gueye/ALT/archive/refs/heads/TelechargerAlt.zip",
     imageTemplate: Template8,
     fonCardTemplate: "bg-[#ecd0d064]",
-    titreCrdTemplate: "Alt ",
+    titreCrdTemplate: "CreativeDesign ",
     DesctiptionTemplate: "Design agency website ",
     prixTemplate: <p className="text-green-700 font-bold ">Free</p>,
     handlePriceTo: "",
