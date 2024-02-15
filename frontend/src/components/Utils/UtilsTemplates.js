@@ -44,11 +44,11 @@ export const CardsTemplateContenu = [
 
 export const CardsTemplateContenu2 = [
   {
-    HandlePreview: "/template1",
+    HandlePreview: "https://barrymamadou12345.github.io/SkillHubTemplate/",
     handleBuy:
       "https://github.com/barrymamadou12345/HubForgeTEMPLATES/archive/refs/heads/SkillHubTemplate.zip",
     handleDownloadHtml:
-      "https://github.com/barrymamadou12345/SkillHubTemplate/archive/refs/heads/main.zip",
+      "https://github.com/barrymamadou12345/SkillHubTemplate/archive/refs/heads/SkillHub.zip",
     imageTemplate: Template1,
     fonCardTemplate: "bg-[#35e71621]",
     titreCrdTemplate: " SkillHub",
