@@ -17,6 +17,9 @@ import Aria from "./components/TemplateNum4/Aria";
 import { RenduNewTemplate } from "./components/NewTemplate/RenduNewTemplate";
 import { TotalTemplates } from "./components/Templates/TotalTemplates";
 import TelechargePage from "./components/Templates/TelechargePage";
+import ChompRestaurant from "./components/pageTemplate2/ChompRestaurant";
+import Ensemble from "./components/composPageAccueil/NewTemp2/Ensemble";
+import SEVI from "./components/NewTemp1/SEVI";
 
 function App() {
   return (
@@ -30,12 +33,12 @@ function App() {
               element={<TelechargePage />}
             />
             <Route path="/template1" element={<RenduNewTemplate />} />
-            <Route path="/template2" element={<PageTemplate1 />} />
-            <Route path="/template3" element={<PageTemplate3 />} />
+            <Route path="/template2" element={<ChompRestaurant />} />
+            <Route path="/template3" element={<SEVI />} />
             <Route path="/template4" element={<EnsembleTemp2 />} />
             <Route path="/template5" element={<Aria />} />
             <Route path="/template6" element={<Ampire />} />
-            <Route path="/template7" element={<PageTemplate2 />} />
+            <Route path="/template7" element={<Ensemble />} />
             <Route path="/template8" element={<Alt />} />
             <Route path="/template9" element={<PageTemplate4 />} />
             <Route path="/template10" element={<PageTemplate4 />} />
