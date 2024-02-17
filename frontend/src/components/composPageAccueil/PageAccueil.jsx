@@ -11,19 +11,35 @@ export const PageAccueil = () => {
   const { darkMode } = useAppContext();
   return (
     <div
-      className={`min-h-[132vw] ${
+      className={`min-h-[132vw] max-w-[1610px] ${
         darkMode ? "bg-noir text-blanc" : "bg-blanc text-noir"
       }`}
     >
       <div>
         <div>
           <HubForgeHeader
-            pageName={"Dashbords"}
-            directionPage={"/dashbords"}
-            arrowDirect={
-              <FaArrowRight className="text-[32px] pt-1 ps-4  animate-pulse" />
+            TitrePage={
+              <h1
+                className={`text-center text-6xl max-sm:text-4xl font-bold leading-[66px] ${
+                  darkMode ? "text-blanc" : " text-bluq"
+                }`}
+              >
+                Transformez votre <br />
+                <span>vision en réalité </span> <br />
+                <span>simplement</span>
+              </h1>
             }
-            pixels={"px-6"}
+            directionPage={"/dashbords"}
+            Bouton={
+              <button
+                className={`text-white font-bold px-6 rounded-full hover:bg-[#34296f] py-2 items-center text-xl flex bg-[#221246] ${
+                  darkMode ? "bg-blue-800" : ""
+                }`}
+              >
+                Dashbords
+                <FaArrowRight className="text-[32px] pt-1 ps-4  animate-pulse" />
+              </button>
+            }
           />
         </div>
         <div

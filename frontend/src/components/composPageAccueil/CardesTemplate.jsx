@@ -30,7 +30,8 @@ export const CardesTemplate = ({
       onMouseLeave={hoveredMethode}
     >
       <div
-        className={` rounded-xl p-10 max-sm:w-[92%] max-sm:h-[400px]  mx-auto my-2  ${fonCardTemplate} flex justify-center items-center h-[475px] w-[550px]`}
+        className={`CardConta rounded-xl p-10 max-sm:p-7  
+         mx-auto my-2  ${fonCardTemplate} flex justify-center items-center h-[465px] w-[550px]`}
       >
         <img
           src={imageTemplate}
@@ -39,12 +40,12 @@ export const CardesTemplate = ({
             ishover
               ? "hover:scale-105 transition-all duration-700 "
               : "  transition-all  duration-700 "
-          } h-[400px] w-[500px] object-fil max-sm:h-[330px] max-sm:w-[100%] z-0`}
+          } ImgTemp  object-fil h-[400px] z-0`}
         />
       </div>
       <div
-        className={`rounded-xl w-[542px] max-sm:w-[91%]  max-sm:ms-[20px] mx-1 absolute flex
-         h-[78px] justify-center -mt-[88px] ${
+        className={`rounded-xl w-[98%] max-sm:flex  mx-1 ms-[5px] absolute flex
+         h-[78px] justify-center -mt-[90px] ${
            darkMode ? "bg-gray-700" : "bg-white"
          } ${ishover ? "block" : "hidden "}`}
       >
