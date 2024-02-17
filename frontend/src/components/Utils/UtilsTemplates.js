@@ -50,7 +50,7 @@ export const CardsTemplateContenu2 = [
     handleDownloadHtml:
       "https://github.com/barrymamadou12345/SkillHubTemplate/archive/refs/heads/SkillHub.zip",
     imageTemplate: Template1,
-    fonCardTemplate: "bg-[#35e71621]",
+    fonCardTemplate: "bg-[#35e72029]",
     titreCrdTemplate: " SkillHub",
     DesctiptionTemplate: "Modern Sass - Marketing landing page",
     prixTemplate: <p className="text-green-700 font-bold ">Free</p>,

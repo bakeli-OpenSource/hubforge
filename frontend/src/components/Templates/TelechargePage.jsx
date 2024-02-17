@@ -43,25 +43,27 @@ const TelechargePage = () => {
   };
 
   return (
-    <div>
+    <div className="max-w-[1570px]">
       <div
-        className={`flex flex-wrap max-lg:justify-center p-10 
-         h-screen max-lg:h-auto bg-gray-200`}
+        className={`flex flex-wrap max-md:justify-center justify-between p-6 max-sm:p-4 
+         min-h-screen bg-gray-200 w-full`}
       >
-        <div className="max-w-2xl mb-2">
+        <div className="w-[49%] max-md:w-full mb-2">
           <img
             src={templateData.imageTemplate}
             className=" rounded-3xl hover:scale-105 animation-all duration-500 object-cover "
             alt="L'image du Template"
           />
 
-          <h1 className="text-[#20143de4] ps-4 pt-6  f text-xl max-md:text-2xl">
-            <span className="text-lg font-medium  text-black ">Titre : </span>
+          <h1 className="text-[#20143de4] ps-4 pt-6  f text-xl max-md:text-sm">
+            <span className="text-lg font-medium  text-black max-sm:text-md ">
+              Titre :
+            </span>
             {templateData.titreCrdTemplate}
           </h1>
 
-          <h2 className="text-[#20143de4] px-4 text-lg max-md:text-xl">
-            <span className="text-lg font-medium pe-3 text-black ">
+          <h2 className="text-[#20143de4] px-4 text-lg max-md:text-sm">
+            <span className="text-lg font-medium max-sm:text-md pe-3 text-black ">
               Description :
             </span>
             {templateData.DesctiptionTemplate}
@@ -81,12 +83,41 @@ const TelechargePage = () => {
           </a>
         </div>
 
-        <div className="px-4 w-6/12 max-lg:w-full  flex xl:justify-end">
-          <div className=" w-11/12 max-lg:mt-4">
+        <div className=" w-[49%] max-md:w-full  flex ">
+          <div className=" w-full max-md:mt-5">
             <h2 className="text-[#120320e4] font-medium text-xl max-md:text-xl">
               Types de Code :
             </h2>
 
+            <div className=" mt-4 bg-re0 w-full hidden max-md:ms-0 max-sm:block">
+              {templateId !== "template10" && templateId !== "template11" && (
+                <div className={carte1 ? "block" : "hidden"}>
+                  <Link
+                    to={templateData.handleDownloadHtml}
+                    className={` bg-[#08601be8] w-full hover:scale-105 transition-all duration-500 text-blanc justify-center  text-xl rounded-full text-nowrap flex max-sm:text-sm items-center h-[50px] px-5`}
+                  >
+                    Télécharger version HTML
+                  </Link>
+                </div>
+              )}
+
+              <div
+                className={
+                  carte2 ||
+                  templateId === "template10" ||
+                  templateId === "template11"
+                    ? "block"
+                    : "hidden"
+                }
+              >
+                <Link
+                  to={templateData.handleBuy}
+                  className={`  bg-blue-950 w-full hover:scale-105 transition-all duration-500 text-blanc  text-xl rounded-full flex items-center justify-center text-nowrap max-sm:text-sm h-[50px] px-5`}
+                >
+                  Télécharger version React.Js
+                </Link>
+              </div>
+            </div>
             {templateId !== "template10" && templateId !== "template11" && (
               <div
                 onClick={TelechargeHtml}
@@ -112,7 +143,7 @@ const TelechargePage = () => {
                     <h2
                       className={`flex p-3 text-[#08601be8] ${
                         carte1
-                          ? " font-bold text-xl "
+                          ? " font-bold max-sm:text-sm  "
                           : "text-[#39267f] font-medium "
                       }`}
                     >
@@ -161,7 +192,7 @@ const TelechargePage = () => {
                   <h2
                     className={`flex p-3  ${
                       carte2
-                        ? "text-blue-950 font-bold text-xl "
+                        ? "text-blue-950 font-bold max-sm:text-sm "
                         : "text-[#39267f] font-medium "
                     }`}
                   >
@@ -179,7 +210,7 @@ const TelechargePage = () => {
               <h2 className="text-[#20143de4]  pb-4 ps-6 text-md">
                 Après le téléchargement du Template :
                 <span className="flex pt-2 ">
-                  <GoTriangleRight className=" text-2xl pt-1" /> Intallez les
+                  <GoTriangleRight className=" text-2xl pt-1 " /> Intallez les
                   dépendances avec
                   <span className=" ms-1 pb-1 px-2 bg-gray-300 text-md font-medium rounded-lg  ">
                     npm install
@@ -197,7 +228,7 @@ const TelechargePage = () => {
               </h2>
             </div>
 
-            <div className="bg-re0 w-full max-md:ms-0">
+            <div className="max-sm:hidden bg-re0 w-full max-md:ms-0">
               {templateId !== "template10" && templateId !== "template11" && (
                 <div className={carte1 ? "block" : "hidden"}>
                   <Link

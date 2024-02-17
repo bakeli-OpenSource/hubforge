@@ -3,7 +3,11 @@ import { useAppContext } from "../../context/AppContext";
 import { NavBarPageAccueil } from "./NavBarPageAccueil";
 import { Link } from "react-router-dom";
 
-export const HubForgeHeader = ({ directionPage, pageName, arrowDirect ,pixels,}) => {
+export const HubForgeHeader = ({
+  directionPage,
+  Bouton,
+  TitrePage,
+}) => {
   const { darkMode } = useAppContext();
   return (
     <div>
@@ -15,15 +19,7 @@ export const HubForgeHeader = ({ directionPage, pageName, arrowDirect ,pixels,})
         <NavBarPageAccueil />
       </div>
       <div className={` w-full mt-14 px-6 ${darkMode ? "" : ""}`}>
-        <h1
-          className={`text-center text-6xl font-bold leading-[66px] ${
-            darkMode ? "text-blanc" : " text-bluq"
-          }`}
-        >
-          Transformez votre <br />
-          <span>vision en réalité </span> <br />
-          <span>simplement</span>
-        </h1>
+        {TitrePage}
         <p
           className={`text-center py-14 text-xl font-[400] ${
             darkMode ? "text-blanc" : "text-gris"
@@ -36,14 +32,7 @@ export const HubForgeHeader = ({ directionPage, pageName, arrowDirect ,pixels,})
 
       <div className="w-full flex justify-center mb-14">
         <Link to={directionPage}>
-          <button
-            className={`text-white font-bold ${pixels} rounded-full hover:bg-[#34296f] py-2 items-center text-xl flex bg-[#221246] ${
-              darkMode ? "bg-blue-800" : ""
-            }`}
-          >
-            {pageName}
-            {arrowDirect}
-          </button>
+          {Bouton}
         </Link>
       </div>
     </div>

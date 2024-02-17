@@ -14,12 +14,29 @@ export const TotalTemplates = () => {
     >
       <div>
         <HubForgeHeader
+          TitrePage={
+            <h1
+              className={`text-center text-6xl max-sm:text-4xl font-bold leading-[66px] ${
+                darkMode ? "text-blanc" : " text-bluq"
+              }`}
+            >
+              Dashboards
+            </h1>
+          }
           arrowDirect={
             <FaArrowLeft className="text-[32px] pt-1 ps-4  animate-pulse" />
           }
           directionPage={"/"}
-          pageName={"Templats"}
-          pixels={"px-8"}
+          Bouton={
+            <button
+              className={`text-white font-bold px-6 rounded-full hover:bg-[#34296f] py-2 items-center text-xl flex bg-[#221246] ${
+                darkMode ? "bg-blue-800" : ""
+              }`}
+            >
+              <FaArrowLeft className="text-[32px] pt-1 pe-4  animate-pulse" />
+              Templates
+            </button>
+          }
         />
       </div>
       <div
