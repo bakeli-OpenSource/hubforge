@@ -68,7 +68,7 @@ const TelechargePage = () => {
               Types de Code :
             </h2>
 
-            <div className=" mt-4 bg-re0 w-full hidden max-md:ms-0 max-sm:block">
+            <div className=" mt-4 bg-re0 w-full hidden max-md:ms-0 max-md:block">
               {a !== b && a !== c && (
                 <div className={carte1 ? "block" : "hidden"}>
                   <MonLink
@@ -145,7 +145,7 @@ const TelechargePage = () => {
               />
             </div>
 
-            <div className="max-sm:hidden bg-re0 w-full max-md:ms-0">
+            <div className="max-md:hidden bg-re0 w-full max-md:ms-0">
               {a !== b && a !== c && (
                 <div className={carte1 ? "block" : "hidden"}>
                   <MonLink
