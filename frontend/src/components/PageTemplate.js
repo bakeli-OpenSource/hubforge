@@ -28,9 +28,10 @@ export const DetailsTemp = ({
   prixTemplate,
   aprerçuTemp,
   Bordure,
+  Marge
 }) => {
   return (
-    <div className="p-6">
+    <div className={`p-6 ${Marge}`}>
       <a href={aprerçuTemp} target="_blank">
         <img
           src={imageTemp}
@@ -62,7 +63,7 @@ export const DetailsTemp = ({
           href={aprerçuTemp}
           target="_blank"
           className="font-medium pe-3  inline-block items-center pt-1  underline hover:text-vr 
-            text-bl  text-md max-md:text-xl"
+            text-bl  text-md max-md:text-xl max-sm:text-sm"
         >
           Aperçu du template
         </a>
@@ -76,16 +77,16 @@ export const InstructionTemp = ({ condition }) => {
     <h2 className="text-mr  pb-4 ps-6 text-md">
       Après le téléchargement du Template :
       <span className="flex pt-2 ">
-        <GoTriangleRight className=" text-2xl pt-1 text-mr " /> Intallez les
-        dépendances avec
-        <span className=" ms-1 pb-1 px-2 bg-gray-300 text-md font-medium rounded-lg  ">
+        <GoTriangleRight className=" text-2xl pt-1 text-mr " /> Intaller les
+        dépendances
+        <span className=" ms-1 pb-1 px-2 bg-gray-300 text-sm rounded-lg  ">
           npm install
         </span>
       </span>
       <span className="flex mt-1">
         <GoTriangleRight className=" text-2xl text-mr pt-1" /> Lencer
-        L'application avec
-        <span className=" ms-1 pb-1 px-2 bg-gray-300 text-md font-medium  rounded-lg  ">
+        L'application
+        <span className=" ms-1 pb-1 px-2 bg-gray-300 text-sm rounded-lg  ">
           {condition}
         </span>
       </span>

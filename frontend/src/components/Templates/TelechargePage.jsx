@@ -60,6 +60,7 @@ const TelechargePage = () => {
             prixTemplate={templateData.prixTemplate}
             aprerçuTemp={templateData.HandlePreview}
             Bordure={carte1 ? "border-vr" : "border-rg"}
+            Marge={a === b || a === c ? "max-xs:-mb-6" : ""}
           />
         </div>
 
@@ -93,9 +94,7 @@ const TelechargePage = () => {
               <div
                 onClick={TelechargeHtml}
                 className={`  my-4 rounded-xl cursor-pointer ${
-                  carte1
-                    ? "border-vr border-[3px]"
-                    : "border-gray-400 border "
+                  carte1 ? "border-vr border-[3px]" : "border-gray-400 border "
                 }  `}
               >
                 <CodeChoix

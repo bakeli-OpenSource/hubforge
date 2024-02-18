@@ -14,10 +14,10 @@ export const HubForgeHeader = ({ directionPage, Bouton, TitrePage }) => {
       >
         <NavBarPageAccueil />
       </div>
-      <div className={` w-full mt-14 px-6 ${darkMode ? "" : ""}`}>
+      <div className={` w-full mt-10 px-6 ${darkMode ? "" : ""}`}>
         {TitrePage}
         <p
-          className={`text-center py-14 text-xl font-[400] ${
+          className={`text-center py-10 text-xl max-sm:text-lg font-[400] ${
             darkMode ? "text-blanc" : "text-gris"
           }`}
         >

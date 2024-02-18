@@ -1,5 +1,6 @@
 * {
-  font-family: "Montserrat";
+  font-family: Arial, sans-serif;
+  /* font-family: "Montserrat"; */
 }
 
 .testColor {
@@ -13,49 +14,3 @@
   background-size: cover;
   background-position: center;
 }
-
-/* @media screen and (max-width: 1400px) {
-  .CardConta {
-    width: 450px;
-    height: 380px;
-    padding: 22px;
-  }
-  .ImgTemp {
-    height: 330px;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .CardConta {
-    width: 398px;
-    height: 370px;
-  }
-}
-@media screen and (max-width: 1073px) {
-  .CardConta {
-    width: 370px;
-    height: 350px;
-  }
-  .ImgTemp {
-    height: 310px;
-  }
-}
-@media screen and (max-width: 974px) {
-  .CardConta {
-    width: 100%;
-    height: 420px;
-  }
-  .ImgTemp {
-    height: 370px;
-  }
-}
-@media screen and (max-width: 770px) {
-  .CardConta {
-    width: 100%;
-    height: 360px;
-  }
-  .ImgTemp {
-    height: 100%;
-    width: 100%;
-  }
-} */

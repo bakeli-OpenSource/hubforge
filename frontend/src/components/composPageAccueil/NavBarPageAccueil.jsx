@@ -15,9 +15,9 @@ export const NavBarPageAccueil = () => {
 
   return (
     <div>
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-sm:pt-4 max-w-screen-xl ">
         <div className="flex h-16 items-center justify-between">
-          <div className="md:flex md:items-center md:gap-12">
+          <div className="md:flex md:items-center md:gap-6">
             <a
               className={`${
                 darkMode ? "text-blanc" : "text-dark"
@@ -42,7 +42,7 @@ export const NavBarPageAccueil = () => {
                 </button>
               </div>
 
-              <div className="block monToggle md:hidden">
+              <div className="hidden monToggle md:hidden">
                 <button
                   onClick={toggleMenu}
                   className="rounded p-2 transition text-3xl"
