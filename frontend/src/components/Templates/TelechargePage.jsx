@@ -1,6 +1,6 @@
 // TelechargePage.jsx
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   CardsTemplateContenu,
   CardsTemplateContenu2,
@@ -47,24 +47,25 @@ const TelechargePage = () => {
   };
 
   return (
-    <div className="max-w-[1570px]">
+    <div className="max-w-[1570px] ">
       <div
-        className={`flex flex-wrap max-md:justify-center justify-between p-6 max-sm:p-4 
-         min-h-screen bg-gray-200 w-full`}
+        className={`flex flex-wrap max-md:justify-center justify-between 
+         min-h-screen bg-blc w-full`}
       >
-        <div className="w-[49%] max-md:w-full mb-2">
+        <div className="w-[50%] max-md:w-full mb-2">
           <DetailsTemp
             imageTemp={templateData.imageTemplate}
             titreCrdTemp={templateData.titreCrdTemplate}
             DescriptTemp={templateData.DesctiptionTemplate}
             prixTemplate={templateData.prixTemplate}
             aprerçuTemp={templateData.HandlePreview}
+            Bordure={carte1 ? "border-vr" : "border-rg"}
           />
         </div>
 
-        <div className=" w-[49%] max-md:w-full  flex ">
+        <div className=" w-[50%] max-md:w-full max-md:pt-0 pt-6 pe-6 flex bg-gray-200 ps-6 ">
           <div className=" w-full max-md:mt-5">
-            <h2 className="text-[#120320e4] font-medium text-xl max-md:text-xl">
+            <h2 className="text-mr font-medium text-xl max-md:text-xl">
               Types de Code :
             </h2>
 
@@ -74,7 +75,7 @@ const TelechargePage = () => {
                   <MonLink
                     action={templateData.handleDownloadHtml}
                     actionName={"Télécharger version version HTML"}
-                    BgColor={"bg-[#08601be8]"}
+                    BgColor={"bg-vr"}
                   />
                 </div>
               )}
@@ -84,7 +85,7 @@ const TelechargePage = () => {
                 <MonLink
                   action={templateData.handleBuy}
                   actionName={"Télécharger version React.Js"}
-                  BgColor={"bg-blue-950"}
+                  BgColor={"bg-rg"}
                 />
               </div>
             </div>
@@ -93,22 +94,22 @@ const TelechargePage = () => {
                 onClick={TelechargeHtml}
                 className={`  my-4 rounded-xl cursor-pointer ${
                   carte1
-                    ? "border-[#08601be8] border-[3px]"
+                    ? "border-vr border-[3px]"
                     : "border-gray-400 border "
                 }  `}
               >
                 <CodeChoix
-                  condition1={carte1 ? "bg-[#08601be8]" : ""}
+                  condition1={carte1 ? "bg-vr" : ""}
                   condition2={
                     carte1
-                      ? " font-bold text-[#08601be8] max-sm:text-sm  "
-                      : "text-[#39267f] font-medium "
+                      ? " font-bold text-vr max-sm:text-sm  "
+                      : "text-mr font-medium "
                   }
                   TypeCode={"HTML - TailwindCss"}
                   prixTemplate={templateData.prixTemplate}
                 />
 
-                <h2 className="text-[#20143de4] flex font-medium ps-6 py-6 text-md">
+                <h2 className="text-mr flex font-medium ps-6 py-6 text-md">
                   Version HTML - TailwindCss
                 </h2>
               </div>
@@ -118,24 +119,24 @@ const TelechargePage = () => {
 
             <div
               onClick={TelechargeReact}
-              className={`  my-4 rounded-xl cursor-pointer ${
+              className={`my-4 rounded-xl cursor-pointer ${
                 carte2 || a === b || a === c
-                  ? "border-blue-950 border-[3px]"
+                  ? "border-rg border-[3px]"
                   : "border-gray-400 border "
               }  `}
             >
               <CodeChoix
-                condition1={carte2 || a === b || a === c ? "bg-blue-950" : ""}
+                condition1={carte2 || a === b || a === c ? "bg-rg" : ""}
                 condition2={
                   carte2
-                    ? "text-blue-950 font-bold max-sm:text-sm "
-                    : "text-[#39267f] font-medium "
+                    ? "text-rg font-bold max-sm:text-sm "
+                    : "text-mr font-medium "
                 }
                 TypeCode={"React.Js - TailwindCss"}
                 prixTemplate={templateData.prixTemplate}
               />
 
-              <h2 className="text-[#20143de4] flex font-medium ps-6 py-6 text-md">
+              <h2 className="text-mr flex font-medium ps-6 py-6 text-md">
                 Version React.Js - TailwindCss
               </h2>
               <InstructionTemp
@@ -145,13 +146,13 @@ const TelechargePage = () => {
               />
             </div>
 
-            <div className="max-md:hidden bg-re0 w-full max-md:ms-0">
+            <div className="max-md:hidden w-full max-md:ms-0">
               {a !== b && a !== c && (
                 <div className={carte1 ? "block" : "hidden"}>
                   <MonLink
                     action={templateData.handleDownloadHtml}
                     actionName={"Télécharger version version HTML"}
-                    BgColor={"bg-[#08601be8]"}
+                    BgColor={"bg-vr"}
                   />
                 </div>
               )}
@@ -162,7 +163,7 @@ const TelechargePage = () => {
                 <MonLink
                   action={templateData.handleBuy}
                   actionName={"Télécharger version React.Js"}
-                  BgColor={"bg-blue-950"}
+                  BgColor={"bg-rg"}
                 />
               </div>
             </div>

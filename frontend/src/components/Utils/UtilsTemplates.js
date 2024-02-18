@@ -7,12 +7,8 @@ import Template5 from "../../assets/images/template4.jpg";
 import Template6 from "../../assets/images/template3.jpg";
 import Template7 from "../../assets/images/template7.jpg";
 import Template8 from "../../assets/images/template2.jpg";
-import Template9 from "../../assets/images/template9.jpg";
-import Template10 from "../../assets/images/template10.jpg";
-import Template11 from "../../assets/images/template11.jpg";
 import Template15 from "../../assets/images/template15.jpg";
 import Template13 from "../../assets/images/template6.jpg";
-// import Template8 from "../../assets/images/template8.jpg";
 
 export const CardsTemplateContenu = [
   {
@@ -23,7 +19,7 @@ export const CardsTemplateContenu = [
     fonCardTemplate: "bg-[#ff66002f]",
     titreCrdTemplate: " Reduction DashBoard ",
     DesctiptionTemplate: "Modern Marketing dashBoard",
-    prixTemplate: <p className="text-green-700 font-bold ">Free</p>,
+    prixTemplate: <p className="text-[#00B38A] font-bold ">Free</p>,
     handlePriceTo: "",
     telechargeLink: "/telecharge/template10",
   },
@@ -36,7 +32,7 @@ export const CardsTemplateContenu = [
     fonCardTemplate: "bg-[#cc00c740]",
     titreCrdTemplate: " Dashboard ",
     DesctiptionTemplate: "Simple Designer DashBoard",
-    prixTemplate: <p className="text-green-700 font-bold ">Free</p>,
+    prixTemplate: <p className="text-[#00B38A] font-bold ">Free</p>,
     handlePriceTo: "",
     telechargeLink: "/telecharge/template11",
   },
@@ -53,7 +49,7 @@ export const CardsTemplateContenu2 = [
     fonCardTemplate: "bg-[#35e72029]",
     titreCrdTemplate: " SkillHub",
     DesctiptionTemplate: "Modern Sass - Marketing landing page",
-    prixTemplate: <p className="text-green-700 font-bold ">Free</p>,
+    prixTemplate: <p className="text-[#00B38A] font-bold ">Free</p>,
     handlePriceTo: "",
     telechargeLink: "/telecharge/template1",
   },
@@ -68,7 +64,7 @@ export const CardsTemplateContenu2 = [
     fonCardTemplate: "bg-[#f8d7032f]",
     titreCrdTemplate: " Food Delivred",
     DesctiptionTemplate: "Modern Sass - Marketing landing page",
-    prixTemplate: <p className="text-green-700 font-bold ">Free</p>,
+    prixTemplate: <p className="text-[#00B38A] font-bold ">Free</p>,
     handlePriceTo: "",
     telechargeLink: "/telecharge/template2",
   },
@@ -82,7 +78,7 @@ export const CardsTemplateContenu2 = [
     fonCardTemplate: "bg-[#f81b032f]",
     titreCrdTemplate: " Lecturama",
     DesctiptionTemplate: "Modern Sass - Marketing landing page",
-    prixTemplate: <p className="text-green-700 font-bold ">Free</p>,
+    prixTemplate: <p className="text-[#00B38A] font-bold ">Free</p>,
     handlePriceTo: "",
     telechargeLink: "/telecharge/template3",
   },
@@ -97,7 +93,7 @@ export const CardsTemplateContenu2 = [
     fonCardTemplate: "bg-[#7c88cc60]",
     titreCrdTemplate: " ProManage",
     DesctiptionTemplate: "Modern Marketing - startup complete website",
-    prixTemplate: <p className="text-green-700 font-bold ">Free</p>,
+    prixTemplate: <p className="text-[#00B38A] font-bold ">Free</p>,
     handlePriceTo: "",
     telechargeLink: "/telecharge/template4",
   },
@@ -112,7 +108,7 @@ export const CardsTemplateContenu2 = [
     fonCardTemplate: "bg-[#7cc9cc60]",
     titreCrdTemplate: " ClaireObscure",
     DesctiptionTemplate: "Modern Sass - Marketing landing page",
-    prixTemplate: <p className="text-green-700 font-bold ">Free</p>,
+    prixTemplate: <p className="text-[#00B38A] font-bold ">Free</p>,
     handlePriceTo: "",
     telechargeLink: "/telecharge/template5",
   },
@@ -126,7 +122,7 @@ export const CardsTemplateContenu2 = [
     fonCardTemplate: "bg-[#cc7cc740]",
     titreCrdTemplate: " Ampire ",
     DesctiptionTemplate: "Simple Designer - Photographer portfolio",
-    prixTemplate: <p className="text-green-700 font-bold ">Free</p>,
+    prixTemplate: <p className="text-[#00B38A] font-bold ">Free</p>,
     handlePriceTo: "",
     telechargeLink: "/telecharge/template6",
   },
@@ -140,7 +136,7 @@ export const CardsTemplateContenu2 = [
     fonCardTemplate: "bg-[#008cff2f]",
     titreCrdTemplate: " Changelly",
     DesctiptionTemplate: "Modern Sass - Marketing landing page",
-    prixTemplate: <p className="text-green-700 font-bold ">Free</p>,
+    prixTemplate: <p className="text-[#00B38A] font-bold ">Free</p>,
     handlePriceTo: "",
     telechargeLink: "/telecharge/template7",
   },
@@ -155,7 +151,7 @@ export const CardsTemplateContenu2 = [
     fonCardTemplate: "bg-[#ecd0d064]",
     titreCrdTemplate: "CreativeDesign ",
     DesctiptionTemplate: "Design agency website ",
-    prixTemplate: <p className="text-green-700 font-bold ">Free</p>,
+    prixTemplate: <p className="text-[#00B38A] font-bold ">Free</p>,
     handlePriceTo: "",
     telechargeLink: "/telecharge/template8",
   },

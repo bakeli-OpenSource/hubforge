@@ -12,10 +12,15 @@ module.exports = {
         bleu: "#2200e5",
         gris: "#757575",
         maron: "#ecd0d0e8",
-        bluq: "#072967",
+        vr: "#00B38A",
+        rg: "#C24A76",
+        bl: "#072967",
+        gr: "#AAAABC",
+        mr: "#412728c9",
+        blc: "#F8F9ff",
       },
-      fontFamily: {
-        marcellusSerif: ["Marcellus SC", "serif"],
+      screens: {
+        xs: "480px",
       },
     },
   },
