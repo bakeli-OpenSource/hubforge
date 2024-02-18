@@ -10,14 +10,16 @@ export const TotalTemplates = () => {
   const { darkMode } = useAppContext();
   return (
     <div
-      className={`${darkMode ? " bg-gray-900 text-white" : "border-gray-100"}`}
+      className={`${
+        darkMode ? " bg-gray-800  text-white" : "border-gray-100"
+      }`}
     >
       <div>
         <HubForgeHeader
           TitrePage={
             <h1
               className={`text-center text-6xl max-sm:text-4xl font-bold leading-[66px] ${
-                darkMode ? "text-blanc" : " text-bluq"
+                darkMode ? "text-blanc" : " text-bl"
               }`}
             >
               Dashboards
@@ -29,7 +31,7 @@ export const TotalTemplates = () => {
           directionPage={"/"}
           Bouton={
             <button
-              className={`text-white font-bold px-6 rounded-full hover:bg-[#34296f] py-2 items-center text-xl flex bg-[#221246] ${
+              className={`text-white font-bold px-6 rounded-full hover:bg-[#34296f] py-2 items-center text-xl flex bg-bl ${
                 darkMode ? "bg-blue-800" : ""
               }`}
             >
@@ -39,9 +41,7 @@ export const TotalTemplates = () => {
           }
         />
       </div>
-      <div
-        className={`mt-8 max-sm:mx-4 md:mx-24 flex justify-around flex-wrap`}
-      >
+      <div className={`mt-8  flex justify-center w-full flex-wrap`}>
         {CardsTemplateContenu.map((card, index) => (
           <CardesTemplate {...card} key={index} />
         ))}
