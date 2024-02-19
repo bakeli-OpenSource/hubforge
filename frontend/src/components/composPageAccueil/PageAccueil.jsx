@@ -19,7 +19,7 @@ export const PageAccueil = () => {
           <HubForgeHeader
             TitrePage={
               <h1
-                className={`text-center text-6xl max-sm:text-3xl font-[800] 
+                className={`policeTitre text-center text-6xl max-sm:text-3xl font-[800] 
                 leading-[70px] max-sm:leading-[45px]  max-sm:tracking-wider  ${
                   darkMode ? "text-blanc" : " text-bl"
                 }`}
