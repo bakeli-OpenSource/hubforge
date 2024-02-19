@@ -40,21 +40,6 @@ export const CardsTemplateContenu = [
 
 export const CardsTemplateContenu2 = [
   {
-    HandlePreview: "https://barrymamadou12345.github.io/SkillHubTemplate/",
-    handleBuy:
-      "https://github.com/barrymamadou12345/HubForgeTEMPLATES/archive/refs/heads/SkillHubTemplate.zip",
-    handleDownloadHtml:
-      "https://github.com/barrymamadou12345/SkillHubTemplate/archive/refs/heads/SkillHub.zip",
-    imageTemplate: Template1,
-    fonCardTemplate: "bg-[#35e72029]",
-    titreCrdTemplate: " SkillHub",
-    DesctiptionTemplate: "Modern Sass - Marketing landing page",
-    prixTemplate: <p className="text-[#00B38A] font-bold ">Free</p>,
-    handlePriceTo: "",
-    telechargeLink: "/telecharge/template1",
-  },
-
-  {
     HandlePreview: "https://cheikh-ahmed-tidiane-gueye.github.io/food/",
     handleBuy:
       "https://github.com/barrymamadou12345/HubForgeTEMPLATES/archive/refs/heads/Food.zip",
@@ -96,6 +81,21 @@ export const CardsTemplateContenu2 = [
     prixTemplate: <p className="text-[#00B38A] font-bold ">Free</p>,
     handlePriceTo: "",
     telechargeLink: "/telecharge/template4",
+  },
+
+  {
+    HandlePreview: "https://barrymamadou12345.github.io/SkillHubTemplate/",
+    handleBuy:
+      "https://github.com/barrymamadou12345/HubForgeTEMPLATES/archive/refs/heads/SkillHubTemplate.zip",
+    handleDownloadHtml:
+      "https://github.com/barrymamadou12345/SkillHubTemplate/archive/refs/heads/SkillHub.zip",
+    imageTemplate: Template1,
+    fonCardTemplate: "bg-[#35e72029]",
+    titreCrdTemplate: " SkillHub",
+    DesctiptionTemplate: "Modern Sass - Marketing landing page",
+    prixTemplate: <p className="text-[#00B38A] font-bold ">Free</p>,
+    handlePriceTo: "",
+    telechargeLink: "/telecharge/template1",
   },
 
   {
