@@ -26,7 +26,7 @@ export const HubForgeHeader = ({ directionPage, Bouton, TitrePage }) => {
         </p>
       </div>
 
-      <div className="w-full flex justify-center mb-14">
+      <div className="w-full flex justify-center mb-8">
         <Link to={directionPage}>{Bouton}</Link>
       </div>
     </div>

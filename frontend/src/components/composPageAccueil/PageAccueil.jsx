@@ -29,17 +29,6 @@ export const PageAccueil = () => {
                 <span>simplement</span>
               </h1>
             }
-            directionPage={"/dashbords"}
-            Bouton={
-              <button
-                className={`text-white font-bold px-6 rounded-full hover:bg-[#34296f] py-2 items-center text-xl flex bg-bl ${
-                  darkMode ? "bg-blue-800" : ""
-                }`}
-              >
-                Dashbords
-                <FaArrowRight className="text-[32px] pt-1 ps-4  animate-pulse" />
-              </button>
-            }
           />
         </div>
         <div className={`mt-8 flex justify-center w-full flex-wrap`}>
