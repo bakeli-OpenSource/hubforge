@@ -6,7 +6,7 @@ import Footer from "./Footer";
 
 export default function Ensemble() {
   return (
-    <div>
+    <div className="">
       <SectFirst />
       <SectSecnd />
       <Testimonials />
