@@ -1,12 +1,7 @@
 // App.jsx
 import React from "react";
 import "./App.css";
-import {
-  PageTemplate1,
-  PageTemplate2,
-  PageTemplate3,
-  PageTemplate4,
-} from "./components/PageTemplate";
+import { PageTemplate4 } from "./components/PageTemplate";
 import Alt from "./components/TemplateNum1/Alt";
 import { PageAccueil } from "./components/composPageAccueil/PageAccueil";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

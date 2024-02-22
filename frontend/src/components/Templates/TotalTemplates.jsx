@@ -1,23 +1,21 @@
 import React from "react";
 import { CardesTemplate } from "../composPageAccueil/CardesTemplate";
-import { CardsTemplateContenu } from "../Utils/UtilsTemplates";
-import { Link } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa6";
 import { useAppContext } from "../../context/AppContext";
 import { HubForgeHeader } from "../composPageAccueil/HubForgeHeader";
 
 export const TotalTemplates = () => {
-  const { darkMode } = useAppContext();
+  const { darkMode, templates, apiUrlImg } = useAppContext();
+
   return (
     <div
-      className={`${darkMode ? " bg-gray-800  text-white" : "border-gray-100"}`}
+      className={`${darkMode ? "bg-gray-800 text-white" : "border-gray-100"}`}
     >
       <div>
         <HubForgeHeader
           TitrePage={
             <h1
               className={`text-center text-6xl max-sm:text-4xl font-bold leading-[66px] ${
-                darkMode ? "text-blanc" : " text-bl"
+                darkMode ? "text-blanc" : "text-bl"
               }`}
             >
               Dashboards
@@ -25,10 +23,24 @@ export const TotalTemplates = () => {
           }
         />
       </div>
-      <div className={`mt-8  flex justify-center w-full flex-wrap`}>
-        {CardsTemplateContenu.map((card, index) => (
-          <CardesTemplate {...card} key={index} />
-        ))}
+
+      <div className={`mt-8 flex justify-center w-full flex-wrap`}>
+        {templates.map(
+          (temp) =>
+            temp.type === "dashboard" && (
+              <CardesTemplate
+                key={temp.id}
+                HandlePreview={temp.preview}
+                imageTemplate={`${apiUrlImg}/${temp.image}`}
+                fonCardTemplate={temp.couleur}
+                handlePriceTo={temp.preview}
+                titreCrdTemplate={temp.titre}
+                DesctiptionTemplate={temp.description}
+                prixTemplate={temp.prix}
+                telechargeLink={`/telecharge/${temp.id}`}
+              />
+            )
+        )}
       </div>
     </div>
   );
