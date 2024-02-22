@@ -1,11 +1,10 @@
 import React from "react";
 import { CardesTemplate } from "../composPageAccueil/CardesTemplate";
-import { CardsTemplateContenu } from "../Utils/UtilsTemplates";
 import { useAppContext } from "../../context/AppContext";
 import { HubForgeHeader } from "../composPageAccueil/HubForgeHeader";
 
 export const TotalTemplates = () => {
-  const { darkMode, templates } = useAppContext();
+  const { darkMode, templates, apiUrlImg } = useAppContext();
 
   return (
     <div
@@ -24,11 +23,6 @@ export const TotalTemplates = () => {
           }
         />
       </div>
-      <div className={`mt-8 flex justify-center w-full flex-wrap`}>
-        {CardsTemplateContenu.map((card, index) => (
-          <CardesTemplate {...card} key={index} />
-        ))}
-      </div>
 
       <div className={`mt-8 flex justify-center w-full flex-wrap`}>
         {templates.map(
@@ -37,13 +31,13 @@ export const TotalTemplates = () => {
               <CardesTemplate
                 key={temp.id}
                 HandlePreview={temp.preview}
-                imageTemplate={`http://127.0.0.1:8000/storage/${temp.image}`}
+                imageTemplate={`${apiUrlImg}/${temp.image}`}
                 fonCardTemplate={temp.couleur}
                 handlePriceTo={temp.preview}
-                titreCrdTemplate={temp.name}
+                titreCrdTemplate={temp.titre}
                 DesctiptionTemplate={temp.description}
                 prixTemplate={temp.prix}
-                telechargeLink={`/telecharge/template8`}
+                telechargeLink={`/telecharge/${temp.id}`}
               />
             )
         )}

@@ -1,41 +1,20 @@
-// TelechargePage.jsx
+
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  CardsTemplateContenu,
-  CardsTemplateContenu2,
-} from "../Utils/UtilsTemplates";
 import { DetailsTemp, InstructionTemp, MonLink } from "../PageTemplate";
 import { CodeChoix } from "./CodeChoix";
+import { useAppContext } from "../../context/AppContext";
 
 const TelechargePage = () => {
   const { templateId } = useParams();
   const [carte1, setCarte1] = useState(true);
   const [carte2, setCarte2] = useState(false);
-  let templateData;
-  const a = templateId;
-  const b = "template10";
-  const c = "template11";
-
-  if (a === b || a === c) {
-    templateData = CardsTemplateContenu.find(
-      (template) => template.telechargeLink === `/telecharge/${a}`
+  const { templates, apiUrlImg } = useAppContext();
+  
+  const templateData = templates.find(
+    (template) => template.id === Number(templateId)
     );
-  } else if (
-    a === "template1" ||
-    a === "template2" ||
-    a === "template3" ||
-    a === "template4" ||
-    a === "template5" ||
-    a === "template6" ||
-    a === "template7" ||
-    a === "template8" ||
-    a === "template9"
-  ) {
-    templateData = CardsTemplateContenu2.find(
-      (template) => template.telechargeLink === `/telecharge/${templateId}`
-    );
-  }
+  console.log("templates:", templateData);
 
   const TelechargeHtml = () => {
     setCarte1(true);
@@ -48,127 +27,143 @@ const TelechargePage = () => {
 
   return (
     <div className="max-w-[1570px] ">
-      <div
-        className={`flex flex-wrap max-md:justify-center justify-between 
+      {templateData && (
+        <div
+          className={`flex flex-wrap max-md:justify-center justify-between 
          min-h-screen bg-blc w-full`}
-      >
-        <div className="w-[50%] max-md:w-full mb-2">
-          <DetailsTemp
-            imageTemp={templateData.imageTemplate}
-            titreCrdTemp={templateData.titreCrdTemplate}
-            DescriptTemp={templateData.DesctiptionTemplate}
-            prixTemplate={templateData.prixTemplate}
-            aprerçuTemp={templateData.HandlePreview}
-            Bordure={carte1 ? "border-vr" : "border-rg"}
-            Marge={a === b || a === c ? "max-xs:-mb-6" : ""}
-          />
-        </div>
+        >
+          <div className="w-[50%] max-md:w-full mb-2">
+            <DetailsTemp
+              imageTemp={`${apiUrlImg}/${templateData.image}`}
+              titreCrdTemp={templateData.titre}
+              DescriptTemp={templateData.description}
+              prixTemplate={templateData.prix}
+              aprerçuTemp={templateData.preview}
+              Bordure={carte1 ? "border-vr" : "border-rg"}
+              Marge={templateData.type === "dashboard" ? "max-xs:-mb-6" : ""}
+            />
+          </div>
 
-        <div className=" w-[50%] max-md:w-full max-md:pt-0 pt-6 pe-6 flex bg-gray-200 ps-6 ">
-          <div className=" w-full max-md:mt-5">
-            <h2 className="text-mr font-medium text-xl max-md:text-xl">
-              Types de Code :
-            </h2>
+          <div className=" w-[50%] max-md:w-full max-md:pt-0 pt-6 pe-6 flex bg-gray-200 ps-6 ">
+            <div className=" w-full max-md:mt-5">
+              <h2 className="text-mr font-medium text-xl max-md:text-xl">
+                Types de Code :
+              </h2>
 
-            <div className=" mt-4 bg-re0 w-full hidden max-md:ms-0 max-md:block">
-              {a !== b && a !== c && (
-                <div className={carte1 ? "block" : "hidden"}>
+              <div className=" mt-4 bg-re0 w-full hidden max-md:ms-0 max-md:block">
+                {templateData.type === "template" && (
+                  <div className={carte1 ? "block" : "hidden"}>
+                    <MonLink
+                      action={templateData.telechargeHtml}
+                      actionName={"Télécharger version version HTML"}
+                      BgColor={"bg-vr"}
+                    />
+                  </div>
+                )}
+                <div
+                  className={
+                    carte2 || templateData.type === "dashboard"
+                      ? "block"
+                      : "hidden"
+                  }
+                >
                   <MonLink
-                    action={templateData.handleDownloadHtml}
-                    actionName={"Télécharger version version HTML"}
-                    BgColor={"bg-vr"}
+                    action={templateData.telechargeReact}
+                    actionName={"Télécharger version React.Js"}
+                    BgColor={"bg-rg"}
                   />
                 </div>
-              )}
-              <div
-                className={carte2 || a === b || a === c ? "block" : "hidden"}
-              >
-                <MonLink
-                  action={templateData.handleBuy}
-                  actionName={"Télécharger version React.Js"}
-                  BgColor={"bg-rg"}
-                />
               </div>
-            </div>
-            {a !== b && a !== c && (
+              {templateData.type === "template" && (
+                <div
+                  onClick={TelechargeHtml}
+                  className={`  my-4 rounded-xl cursor-pointer ${
+                    carte1
+                      ? "border-vr border-[3px]"
+                      : "border-gray-400 border "
+                  }  `}
+                >
+                  <CodeChoix
+                    condition1={carte1 ? "bg-vr" : ""}
+                    condition2={
+                      carte1
+                        ? " font-bold text-vr max-sm:text-sm  "
+                        : "text-mr font-medium "
+                    }
+                    TypeCode={"HTML - TailwindCss"}
+                    prixTemplate={templateData.prix}
+                  />
+
+                  <h2 className="text-mr flex font-medium ps-6 py-6 text-md">
+                    Version HTML - TailwindCss
+                  </h2>
+                </div>
+              )}
+
+              {/*============================== React COde source ==============================*/}
+
               <div
-                onClick={TelechargeHtml}
-                className={`  my-4 rounded-xl cursor-pointer ${
-                  carte1 ? "border-vr border-[3px]" : "border-gray-400 border "
+                onClick={TelechargeReact}
+                className={`my-4 rounded-xl cursor-pointer ${
+                  carte2 || templateData.type === "dashboard"
+                    ? "border-rg border-[3px]"
+                    : "border-gray-400 border "
                 }  `}
               >
                 <CodeChoix
-                  condition1={carte1 ? "bg-vr" : ""}
+                  condition1={
+                    carte2 || templateData.type === "dashboard" ? "bg-rg" : ""
+                  }
                   condition2={
-                    carte1
-                      ? " font-bold text-vr max-sm:text-sm  "
+                    carte2
+                      ? "text-rg font-bold max-sm:text-sm "
                       : "text-mr font-medium "
                   }
-                  TypeCode={"HTML - TailwindCss"}
-                  prixTemplate={templateData.prixTemplate}
+                  TypeCode={"React.Js - TailwindCss"}
+                  prixTemplate={templateData.prix}
                 />
 
                 <h2 className="text-mr flex font-medium ps-6 py-6 text-md">
-                  Version HTML - TailwindCss
+                  Version React.Js - TailwindCss
                 </h2>
+                <InstructionTemp
+                  condition={
+                    templateData.type === "dashboard"
+                      ? "npm run start:dev"
+                      : "npm start"
+                  }
+                />
               </div>
-            )}
 
-            {/*============================== React COde source ============================== */}
+              <div className="max-md:hidden w-full max-md:ms-0">
+                {templateData.type === "template" && (
+                  <div className={carte1 ? "block" : "hidden"}>
+                    <MonLink
+                      action={templateData.telechargeHtml}
+                      actionName={"Télécharger version version HTML"}
+                      BgColor={"bg-vr"}
+                    />
+                  </div>
+                )}
 
-            <div
-              onClick={TelechargeReact}
-              className={`my-4 rounded-xl cursor-pointer ${
-                carte2 || a === b || a === c
-                  ? "border-rg border-[3px]"
-                  : "border-gray-400 border "
-              }  `}
-            >
-              <CodeChoix
-                condition1={carte2 || a === b || a === c ? "bg-rg" : ""}
-                condition2={
-                  carte2
-                    ? "text-rg font-bold max-sm:text-sm "
-                    : "text-mr font-medium "
-                }
-                TypeCode={"React.Js - TailwindCss"}
-                prixTemplate={templateData.prixTemplate}
-              />
-
-              <h2 className="text-mr flex font-medium ps-6 py-6 text-md">
-                Version React.Js - TailwindCss
-              </h2>
-              <InstructionTemp
-                condition={
-                  a === b || a === c ? "npm run start:dev" : "npm start"
-                }
-              />
-            </div>
-
-            <div className="max-md:hidden w-full max-md:ms-0">
-              {a !== b && a !== c && (
-                <div className={carte1 ? "block" : "hidden"}>
+                <div
+                  className={
+                    carte2 || templateData.type === "dashboard"
+                      ? "block"
+                      : "hidden"
+                  }
+                >
                   <MonLink
-                    action={templateData.handleDownloadHtml}
-                    actionName={"Télécharger version version HTML"}
-                    BgColor={"bg-vr"}
+                    action={templateData.telechargeReact}
+                    actionName={"Télécharger version React.Js"}
+                    BgColor={"bg-rg"}
                   />
                 </div>
-              )}
-
-              <div
-                className={carte2 || a === b || a === c ? "block" : "hidden"}
-              >
-                <MonLink
-                  action={templateData.handleBuy}
-                  actionName={"Télécharger version React.Js"}
-                  BgColor={"bg-rg"}
-                />
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
