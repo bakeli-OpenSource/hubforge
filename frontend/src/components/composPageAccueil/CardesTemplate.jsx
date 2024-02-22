@@ -31,7 +31,8 @@ export const CardesTemplate = ({
     >
       <div
         className={`CardConta rounded-xl p-10 max-sm:p-7  
-         mx-auto my-2  ${fonCardTemplate} flex justify-center items-center `}
+         mx-auto my-2 flex justify-center ${fonCardTemplate} items-center `}
+        style={{ backgroundColor: `${fonCardTemplate}` }}
       >
         <img
           src={imageTemplate}
@@ -89,8 +90,8 @@ export const CardesTemplate = ({
         <Link
           to={handlePriceTo}
           target="_blank"
-          className={`text-lg font-[350] ${
-            darkMode ? "text-blanc" : "text-gray-600"
+          className={`text-lg font-[350]   ${
+            darkMode ? "text-blanc" : "text-vr"
           }`}
         >
           {prixTemplate}
