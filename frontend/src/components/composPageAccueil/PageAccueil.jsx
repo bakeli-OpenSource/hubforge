@@ -1,13 +1,11 @@
 import React from "react";
-import { FaArrowRight } from "react-icons/fa";
 import { useAppContext } from "../../context/AppContext";
-import { CardsTemplateContenu2 } from "../Utils/UtilsTemplates";
 import { CardesTemplate } from "./CardesTemplate";
 import { FooterPageAcueil } from "./FooterPageAcueil";
 import { HubForgeHeader } from "./HubForgeHeader";
 
 export const PageAccueil = () => {
-  const { darkMode } = useAppContext();
+  const { darkMode, templates, apiUrlImg } = useAppContext();
   return (
     <div
       className={`min-h-[132vw] h-full max-w-[1610px] ${
@@ -32,9 +30,22 @@ export const PageAccueil = () => {
           />
         </div>
         <div className={`mt-8 flex justify-center w-full flex-wrap`}>
-          {CardsTemplateContenu2.map((card, index) => (
-            <CardesTemplate {...card} key={index} />
-          ))}
+          {templates.map(
+            (temp) =>
+              temp.type === "template" && (
+                <CardesTemplate
+                  key={temp.id}
+                  HandlePreview={temp.preview}
+                  imageTemplate={`${apiUrlImg}/${temp.image}`}
+                  fonCardTemplate={temp.couleur}
+                  handlePriceTo={temp.preview}
+                  titreCrdTemplate={temp.titre}
+                  DesctiptionTemplate={temp.description}
+                  prixTemplate={temp.prix}
+                  telechargeLink={`/telecharge/${temp.id}`}
+                />
+              )
+          )}
         </div>
       </div>
       <div className="">
