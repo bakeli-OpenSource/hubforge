@@ -1,19 +1,19 @@
-
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { DetailsTemp, InstructionTemp, MonLink } from "../PageTemplate";
 import { CodeChoix } from "./CodeChoix";
 import { useAppContext } from "../../context/AppContext";
+import { PulseLoader } from "react-spinners";
 
 const TelechargePage = () => {
   const { templateId } = useParams();
   const [carte1, setCarte1] = useState(true);
   const [carte2, setCarte2] = useState(false);
-  const { templates, apiUrlImg } = useAppContext();
-  
-  const templateData = templates.find(
+  const { templates, apiUrlImg, loading } = useAppContext();
+
+  const templateData = templates?.find(
     (template) => template.id === Number(templateId)
-    );
+  );
   console.log("templates:", templateData);
 
   const TelechargeHtml = () => {
@@ -27,7 +27,15 @@ const TelechargePage = () => {
 
   return (
     <div className="max-w-[1570px] ">
-      {templateData && (
+      {loading && (
+        <div className="text-center mt-60  items-center">
+          <p className="py-6 italic text-bl font-bold text-2xl">
+            Chargement ...
+          </p>
+          <PulseLoader color="#072967" size={"18"} />
+        </div>
+      )}
+      {!loading && templateData && (
         <div
           className={`flex flex-wrap max-md:justify-center justify-between 
          min-h-screen bg-blc w-full`}
