@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { GoTriangleRight } from "react-icons/go";
 
 export const PageTemplate4 = () => {
   return (
@@ -9,7 +8,6 @@ export const PageTemplate4 = () => {
     </div>
   );
 };
-
 export const MonLink = ({ action, actionName, BgColor }) => {
   return (
     <Link
@@ -28,14 +26,14 @@ export const DetailsTemp = ({
   prixTemplate,
   aprerçuTemp,
   Bordure,
-  Marge
+  Marge,
 }) => {
   return (
     <div className={`p-6 ${Marge}`}>
       <a href={aprerçuTemp} target="_blank">
         <img
           src={imageTemp}
-          className={` rounded-2xl shadow-sm shadow-gray-300 ${Bordure} object-cover `}
+          className={` rounded-2xl shadow-sm shadow-gray-30 ${Bordure} object-cover `}
           alt="L'image du Template"
         />
       </a>
@@ -55,7 +53,7 @@ export const DetailsTemp = ({
           {DescriptTemp}
         </h2>
 
-        <h3 className="flex items-center pt-1 text-mr  text-lg max-md:text-xl">
+        <h3 className="flex items-center pt-1 text-vr  text-lg max-md:text-xl">
           <span className="text-lg font-medium pe-3 text-mr ">Prix :</span>
           {prixTemplate}
         </h3>
@@ -69,27 +67,5 @@ export const DetailsTemp = ({
         </a>
       </div>
     </div>
-  );
-};
-
-export const InstructionTemp = ({ condition }) => {
-  return (
-    <h2 className="text-mr  pb-4 ps-6 text-md">
-      Après le téléchargement du Template :
-      <span className="flex pt-2 ">
-        <GoTriangleRight className=" text-2xl pt-1 text-mr " /> Intaller les
-        dépendances
-        <span className=" ms-1 pb-1 px-2 bg-gray-300 text-sm rounded-lg  ">
-          npm install
-        </span>
-      </span>
-      <span className="flex mt-1">
-        <GoTriangleRight className=" text-2xl text-mr pt-1" /> Lencer
-        L'application
-        <span className=" ms-1 pb-1 px-2 bg-gray-300 text-sm rounded-lg  ">
-          {condition}
-        </span>
-      </span>
-    </h2>
   );
 };
