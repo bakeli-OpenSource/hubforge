@@ -3,9 +3,11 @@ import { CardesTemplate } from "../composPageAccueil/CardesTemplate";
 import { useAppContext } from "../../context/AppContext";
 import { HubForgeHeader } from "../composPageAccueil/HubForgeHeader";
 import { PulseLoader } from "react-spinners";
+import { useTemplates } from "../../hook/useTemplates";
 
 export const TotalTemplates = () => {
-  const { darkMode, templates, apiUrlImg, loading } = useAppContext();
+  const { darkMode, apiUrlImg } = useAppContext();
+  const { data: templates } = useTemplates("dashboard");
 
   return (
     <div
@@ -26,31 +28,19 @@ export const TotalTemplates = () => {
       </div>
 
       <div className={`mt-8 flex justify-center w-full flex-wrap`}>
-        {loading && (
-          <div className="text-center mt-8  items-center">
-            <p className="py-6 italic text-bl font-bold text-2xl">
-              Chargement ...
-            </p>
-            <PulseLoader color="#072967" size={"18"} />
-          </div>
-        )}
-        {!loading &&
-          templates?.map(
-            (temp) =>
-              temp?.type === "dashboard" && (
-                <CardesTemplate
-                  key={temp.id}
-                  HandlePreview={temp.preview}
-                  imageTemplate={`${apiUrlImg}/${temp.image}`}
-                  fonCardTemplate={temp.couleur}
-                  handlePriceTo={temp.preview}
-                  titreCrdTemplate={temp.titre}
-                  DesctiptionTemplate={temp.description}
-                  prixTemplate={temp.prix}
-                  telechargeLink={`/telecharge/${temp.id}`}
-                />
-              )
-          )}
+        {templates?.map((temp) => (
+          <CardesTemplate
+            key={temp.id}
+            HandlePreview={temp.aperçu}
+            imageTemplate={`${apiUrlImg}/${temp.image}`}
+            fonCardTemplate={temp.couleur_fond}
+            handlePriceTo={temp.aperçu}
+            titreCrdTemplate={temp.titre}
+            DesctiptionTemplate={temp.description}
+            prixTemplate={temp.prix === null ? "Free" : temp.prix}
+            telechargeLink={`/telecharge/${temp.id}`}
+          />
+        ))}
       </div>
     </div>
   );
