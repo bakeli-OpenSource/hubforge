@@ -31,7 +31,7 @@ const TelechargePage = () => {
       {Data && (
         <div
           className={`flex flex-wrap max-md:justify-center justify-between 
-         min-h-screen bg-blc w-full`}
+          bg-blc w-full`}
         >
           <div className="w-[50%] max-md:w-full mb-2">
             <DetailsTemp
@@ -43,20 +43,20 @@ const TelechargePage = () => {
             />
           </div>
 
-          <div className=" w-[50%] max-md:w-full max-md:pt-0 pt-6 pe-6 flex bg-gray-200 ps-6 ">
-            <div className=" w-full max-md:mt-5">
+          <div className=" w-[50%] max-md:w-full md:h-screen max-md:pb-24 md:overflow-y-scroll max-md:pt-0 pt-6 pe-6  bg-gray-200 ps-6  ">
+            <div className=" w-full mt-20 max-md:mt-5">
               <h2 className="text-mr font-medium text-xl max-md:text-xl">
-                Types de Code :
+                Types de Téléchargements :
               </h2>
 
               {tel.map((t) => (
-                <div className=" mt-4 bg-re0 w-full hidden max-md:ms-0 max-md:block">
+                <div className=" mt-4  pb-6 fixed bottom-0 w-[100%] bg-gray-200 pe-12 hidden max-md:ms-0 max-md:block">
                   <div className={clic === t.id ? "block" : "hidden"}>
                     <MonLink
                       action={t.telechargement}
                       actionName={`Télécharger ${t.type_code}`}
                       BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
-                    />
+                    />  
                   </div>
                 </div>
               ))}
@@ -100,7 +100,7 @@ const TelechargePage = () => {
               ))}
 
               {tel.map((t) => (
-                <div className="max-md:hidden w-full max-md:ms-0">
+                <div className="max-md:hidden bg-gray-200 pt-6 fixed top-0 w-[50%] pe-16 max-md:ms-0">
                   <div className={clic === t.id ? "block" : "hidden"}>
                     <MonLink
                       action={t.telechargement}
