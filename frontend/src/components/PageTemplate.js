@@ -12,7 +12,7 @@ export const MonLink = ({ action, actionName, BgColor }) => {
   return (
     <Link
       to={action}
-      className={`  ${BgColor} w-full focus:scale-90 focus:bg-gr focus:border-2 transition-all duration-500 text-blanc  text-xl rounded-full flex items-center justify-center text-nowrap max-sm:text-sm  h-[50px] px-5`}
+      className={`  ${BgColor} w-full focus:scale-90 focus:bg-gr focus:border-2 transition-all duration-500 text-blanc  text-xl rounded-2xl flex items-center justify-center text-nowrap max-lg:text-sm  h-[60px] px-5`}
     >
       {actionName}
     </Link>
