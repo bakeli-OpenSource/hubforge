@@ -26,11 +26,11 @@ const TelechargePage = () => {
   const typeSelect = (type) => {
     setClic((prev) => (prev === type ? null : type));
   };
-  const handleDownloadClick = (telechargementId) => {
+  const handleDownloadClick = (typeCode) => {
     // Mettre à jour le nombre de clics pour ce type de téléchargement
     setClickCounts((prevClicks) => ({
       ...prevClicks,
-      [telechargementId]: prevClicks[telechargementId] + 1,
+      [typeCode]: prevClicks[typeCode] + 1,
     }));
   };
   return (
