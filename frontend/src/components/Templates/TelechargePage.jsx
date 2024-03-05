@@ -10,6 +10,7 @@ const TelechargePage = () => {
   const [clic, setClic] = useState(null);
   const { apiUrlImg } = useAppContext();
   const { data: templates } = useTemplates();
+  const [clickCounts, setClickCounts] = useState({}); // State pour enregistrer le no
 
   const Data = templates?.find(
     (template) => template.id === Number(templateId)
@@ -25,7 +26,13 @@ const TelechargePage = () => {
   const typeSelect = (type) => {
     setClic((prev) => (prev === type ? null : type));
   };
-
+  const handleDownloadClick = (telechargementId) => {
+    // Mettre à jour le nombre de clics pour ce type de téléchargement
+    setClickCounts((prevClicks) => ({
+      ...prevClicks,
+      [telechargementId]: prevClicks[telechargementId] + 1,
+    }));
+  };
   return (
     <div className="max-w-[1570px] ">
       {Data && (
@@ -56,11 +63,11 @@ const TelechargePage = () => {
                       action={t.telechargement}
                       actionName={`Télécharger ${t.type_code}`}
                       BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
+                      clic={() => handleDownloadClick(t.type_code)}
                     />  
                   </div>
                 </div>
               ))}
-
               {tel.map((t) => (
                 <div
                   key={t.id}
@@ -106,6 +113,7 @@ const TelechargePage = () => {
                       action={t.telechargement}
                       actionName={`Télécharger ${t.type_code}`}
                       BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
+                      clic={() => handleDownloadClick(t.type_code)}
                     />
                   </div>
                 </div>
