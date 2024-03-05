@@ -64,7 +64,11 @@ const TelechargePage = () => {
                       actionName={`Télécharger ${t.type_code}`}
                       BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
                       clic={() => handleDownloadClick(t.type_code)}
-                    />  
+                    />
+                    <p>
+                    Nombre de clics : {clickCounts[t.type_code] || 0}
+                  </p>
+  
                   </div>
                 </div>
               ))}
@@ -115,6 +119,10 @@ const TelechargePage = () => {
                       BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
                       clic={() => handleDownloadClick(t.type_code)}
                     />
+                    <p>
+                    Nombre de clics : {clickCounts[t.type_code] || 0}
+                  </p>
+
                   </div>
                 </div>
               ))}
