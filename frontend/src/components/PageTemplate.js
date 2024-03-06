@@ -8,10 +8,11 @@ export const PageTemplate4 = () => {
     </div>
   );
 };
-export const MonLink = ({ action, actionName, BgColor }) => {
+export const MonLink = ({ action,onClick, actionName, BgColor }) => {
   return (
     <Link
       to={action}
+      onClick={onClick}
       className={`  ${BgColor} w-full focus:scale-90 focus:bg-gr focus:border-2 transition-all duration-500 text-blanc  text-xl rounded-2xl flex items-center justify-center text-nowrap max-lg:text-sm  h-[60px] px-5`}
     >
       {actionName}
