@@ -27,11 +27,10 @@ const TelechargePage = () => {
     setClic((prev) => (prev === type ? null : type));
   };
   const handleDownloadClick = () => {
-     console.log("Bouton de téléchargement cliqué pour le type :",);
      setClickCounts(clickCounts + 1)
+     console.log(`Bouton de téléchargement cliqué pour le type : ${clic}`)
     
   };
-  
   return (
     <div className="max-w-[1570px] ">
       {Data && (
