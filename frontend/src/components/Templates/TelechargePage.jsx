@@ -10,7 +10,7 @@ const TelechargePage = () => {
   const [clic, setClic] = useState(null);
   const { apiUrlImg } = useAppContext();
   const { data: templates } = useTemplates();
-  const [clickCounts, setClickCounts] = useState({}); // State pour enregistrer le no
+  const [clickCounts, setClickCounts] = useState(0); // State pour enregistrer le no
 
   const Data = templates?.find(
     (template) => template.id === Number(templateId)
@@ -26,13 +26,10 @@ const TelechargePage = () => {
   const typeSelect = (type) => {
     setClic((prev) => (prev === type ? null : type));
   };
-  const handleDownloadClick = (type_code) => {
+  const handleDownloadClick = () => {
     console.log("Bouton de téléchargement cliqué pour le type :", type_code);
     // Mettre à jour le nombre de clics pour ce type de téléchargement
-    setClickCounts((prevClicks) => ({
-      ...prevClicks,
-      [type_code]: (prevClicks[type_code] || 0) + 1,
-    }));
+    setClickCounts(clickCounts + 1)
   };
   
   return (
@@ -65,7 +62,7 @@ const TelechargePage = () => {
                       action={t.telechargement}
                       actionName={`Télécharger ${t.type_code}`}
                       BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
-                      onClick={() => handleDownloadClick(t.type_code)}
+                      onClick={handleDownloadClick}
                     />
                     <p>
                     Nombre de clics : {clickCounts[t.type_code] || 0}
@@ -119,7 +116,7 @@ const TelechargePage = () => {
                       action={t.telechargement}
                       actionName={`Télécharger ${t.type_code}`}
                       BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
-                      onClick={() => handleDownloadClick(t.type_code)}
+                      onClick={ handleDownloadClick}
                     />
                     <p>
                     Nombre de clics : {clickCounts[t.type_code] || 0}
