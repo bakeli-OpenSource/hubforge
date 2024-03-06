@@ -27,7 +27,7 @@ const TelechargePage = () => {
     setClic((prev) => (prev === type ? null : type));
   };
   const handleDownloadClick = () => {
-    console.log("Bouton de téléchargement cliqué pour le type :", type_code);
+    console.log("Bouton de téléchargement cliqué pour le type :",);
     // Mettre à jour le nombre de clics pour ce type de téléchargement
     setClickCounts(clickCounts + 1)
   };
@@ -64,9 +64,9 @@ const TelechargePage = () => {
                       BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
                       onClick={handleDownloadClick}
                     />
-                    <p>
-                    Nombre de clics : {clickCounts[t.type_code] || 0}
-                  </p>
+                    
+                    <p>Nombre de clics : {clickCounts[t.id] || 0}</p>
+                  
   
                   </div>
                 </div>
@@ -116,10 +116,10 @@ const TelechargePage = () => {
                       action={t.telechargement}
                       actionName={`Télécharger ${t.type_code}`}
                       BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
-                      onClick={ handleDownloadClick}
+                      onClick={handleDownloadClick}
                     />
                     <p>
-                    Nombre de clics : {clickCounts[t.type_code] || 0}
+                    Nombre de clics : {clickCounts [t.id]}
                   </p>
 
                   </div>
