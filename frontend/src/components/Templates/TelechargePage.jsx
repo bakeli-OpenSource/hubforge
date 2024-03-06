@@ -4,11 +4,14 @@ import { DetailsTemp, MonLink } from "../PageTemplate";
 import { CodeChoix } from "./CodeChoix";
 import { useAppContext } from "../../context/AppContext";
 import { useTemplates } from "../../hook/useTemplates";
+import { useMutation } from 'react-query';
+import { useAppContext } from "../context/AppContext";
 
 const TelechargePage = () => {
   const { templateId } = useParams();
   const [clic, setClic] = useState(null);
   const { apiUrlImg } = useAppContext();
+  const { apiTel} = useAppContext();
   const { data: templates } = useTemplates();
   const [clickCounts, setClickCounts] = useState(0); // State pour enregistrer le no
 
@@ -26,11 +29,34 @@ const TelechargePage = () => {
   const typeSelect = (type) => {
     setClic((prev) => (prev === type ? null : type));
   };
+  const TelechargementMutation = useMutation(
+    (data) => fetch(`${apiTel}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    }),
+    {
+        onSuccess: () => {
+            console.log('Données enregistrées avec succès dans la base de données');
+        },
+        onError: (error) => {
+            console.error('Erreur lors de l\'enregistrement des données :', error);
+        },
+    }
+);
   const handleDownloadClick = () => {
-     setClickCounts(clickCounts + 1)
-     console.log(`Bouton de téléchargement cliqué pour le type : ${clic}`)
-    
-  };
+    setClickCounts(clickCounts + 1);
+
+    // Appel de la fonction de mutation pour envoyer les données
+    TelechargementMutation.mutate({
+        type_telechargement_id: clic, // ID du type de téléchargement
+        nom_type_telechargement: Data.nom, // Nom du type de téléchargement
+        // Ajoutez d'autres données si nécessaire
+    });
+};
+
   return (
     <div className="max-w-[1570px] ">
       {Data && (
