@@ -27,9 +27,9 @@ const TelechargePage = () => {
     setClic((prev) => (prev === type ? null : type));
   };
   const handleDownloadClick = () => {
-    // console.log("Bouton de téléchargement cliqué pour le type :",);
-    // setClickCounts(clickCounts + 1)
-    alert('nbre clic')
+     console.log("Bouton de téléchargement cliqué pour le type :",);
+     setClickCounts(clickCounts + 1)
+    
   };
   
   return (
