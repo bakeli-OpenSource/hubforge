@@ -1,16 +1,17 @@
+// components/TelechargePage.js
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { DetailsTemp, MonLink } from "../PageTemplate";
 import { CodeChoix } from "./CodeChoix";
 import { useAppContext } from "../../context/AppContext";
 import { useTemplates } from "../../hook/useTemplates";
-import { useMutation } from 'react-query';
+import { usePostClic } from "../../hook/usePostClic";
 
 const TelechargePage = () => {
   const { templateId } = useParams();
   const [clic, setClic] = useState(null);
-  const [clickCounts, setClickCounts] = useState(0); 
-  const { apiUrlImg, apiTel } = useAppContext();
+  const [clickCounts, setClickCounts] = useState(0);
+  const { apiUrlImg } = useAppContext();
   const { data: templates } = useTemplates();
 
   const Data = templates?.find(
@@ -28,24 +29,7 @@ const TelechargePage = () => {
     setClic((prev) => (prev === type ? null : type));
   };
 
-  const TelechargementMutation = useMutation(
-    (data) => fetch(`${apiTel}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    }),
-    {
-        onSuccess: () => {
-            setClickCounts(clickCounts + 1);
-            console.log('Données enregistrées avec succès dans la base de données');
-        },
-        onError: (error) => {
-            console.error('Erreur lors de l\'enregistrement des données :', error);
-        },
-    }
-  );
+  const postClicMutation = usePostClic();
 
   return (
     <div className="max-w-[1570px] ">
@@ -74,7 +58,7 @@ const TelechargePage = () => {
                       BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
                       onClick={() => {
                         setClickCounts(clickCounts + 1);
-                        TelechargementMutation.mutate({
+                        postClicMutation.mutate({
                           type_telechargement_id: clic,
                           nom_type_telechargement: Data.nom,
                         });
@@ -117,7 +101,7 @@ const TelechargePage = () => {
                       BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
                       onClick={() => {
                         setClickCounts(clickCounts + 1);
-                        TelechargementMutation.mutate({
+                        postClicMutation.mutate({
                           type_telechargement_id: clic,
                           nom_type_telechargement: Data.nom,
                         });
