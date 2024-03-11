@@ -43,5 +43,7 @@ export const AppProvider = ({ children }) => {
 };
 
 export const useAppContext = () => {
-  return useContext(AppContext);
+  const ctx = useContext(AppContext)
+  if(!ctx) throw new Error("No context provided")
+  return ctx;
 };
