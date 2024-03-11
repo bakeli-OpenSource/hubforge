@@ -1,70 +1,80 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# HubForge
 
-In the project directory, you can run:
+HubForge simplifie la création de sites vitrines et de tableaux de bord intégrés grâce à sa plateforme centralisée. Elle propose une gamme de modèles prêts à l'emploi, avec la possibilité pour les utilisateurs d'accéder au code source et de le personnaliser selon leurs besoins spécifiques. Cette approche garantit une flexibilité totale tout en fournissant une base solide pour le développement web et la création de tableaux de bord. L'interface intuitive de HubForge guide les utilisateurs à travers le processus de personnalisation du code, facilitant ainsi la création d'un design unique et fonctionnel. Que ce soit pour établir une présence en ligne ou visualiser des données de manière efficace, HubForge propose une solution centralisée et personnalisable pour répondre à une variété de besoins en développement web et en création de tableaux de bord.
 
-### `npm start`
+## Table des matières
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Installation](#installation)
+- [Utilisation](#utilisation)
+- [Fonctionnalités](#fonctionnalités)
+- [Contribution](#contribution)
+- [License](#License)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+Assurez-vous d'avoir Node.js installé sur votre machine.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Cloner le dépôt :
+   ```bash
+   git clone https://github.com/bakeli-OpenSource/hubforge.git
 
-### `npm run build`
+2. Accéder au répertoire du projet :
+    ```bash
+   cd hubforge
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Installer les dépendances :
+    ```bash
+    npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Utilisation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Pour exécuter l'application localement, utilisez la commande suivante à partir du répertoire racine du projet.:
 
-### `npm run eject`
+1. Lancer le projet
+    ```bash
+    npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+L'application sera accessible à l'adresse suivante : http://localhost:3000.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Fonctionnalités
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Liste des fonctionnalités principales de l'application
+- **Preview** :
+  Les utilisateurs peuvent prévisualiser les modèles disponibles avant de les télécharger.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Télécharger** :
+  Les utilisateurs ont la possibilité de télécharger les modèles sélectionnés (sous réserve de paiement le cas échéant) pour les intégrer à leurs projets.
 
-## Learn More
+## Contribution
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Toute contribution est la bienvenue ! Pour contribuer à ce projet, suivez ces étapes :
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **Forker le projet.** : 
+créer une copie du projet sur votre propre compte GitHub. pour crée une copie exacte du référentiel sur votre compte, y compris tous les fichiers, l'historique des commits et les branches. Vous pouvez ensuite apporter des modifications à cette copie sans affecter le projet d'origine.
 
-### Code Splitting
+-  ***Forker*** : En haut à droite de la page du projet, vous verrez un bouton "Fork". Cliquez sur ce bouton.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- ***Choisissez l'emplacement*** : Lorsque vous cliquez sur "Fork", GitHub vous redirigera vers une page où vous pourrez choisir où forker le projet. Vous pouvez sélectionner votre compte utilisateur ou une organisation dont vous êtes membre.
 
-### Analyzing the Bundle Size
+- ***Attendez que le projet soit forké*** : Une fois que vous avez choisi l'emplacement, GitHub commencera à créer une copie du projet sur votre compte. Cela peut prendre quelques instants.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- ***Accédez à votre copie du projet*** : Une fois que le processus de forking est terminé, vous serez redirigé vers votre propre copie du projet, sur votre compte GitHub. Vous pouvez désormais cloner ce projet localement sur votre ordinateur et y apporter des modifications comme vous le souhaitez.
 
-### Making a Progressive Web App
+2. **Créer une branche pour votre fonctionnalité**
+    ```bash
+    git checkout -b fonctionnalité/nom-de-la-fonctionnalité
+3. **Valider les modifications**
+    ```bash
+    git commit -am 'Ajout de la fonctionnalité nom-de-la-fonctionnalité'
+4. **Pusher vers la branche**
+    ```bash
+    git push origin fonctionnalité/nom-de-la-fonctionnalité
+5. **Créer une nouvelle Pull Request.**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Assurez-vous de fournir autant de détails que possible, y compris des captures d'écran ou des extraits de code pertinents, pour nous aider à comprendre le problème ou la suggestion d'amélioration.
 
-### Advanced Configuration
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Ce projet est une propriété de **RED Team (*Volkeno*)**
