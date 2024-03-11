@@ -10,6 +10,8 @@ export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const apiUrl = process.env.REACT_APP_API_URL;
   const apiUrlImg = process.env.REACT_APP_API_URL_IMG;
+  const apiTel = process.env.REACT_APP_API_URL_TELECHARGE;
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -31,6 +33,7 @@ export const AppProvider = ({ children }) => {
           apiUrlImg,
           apiUrl,
           loading,
+          apiTel,
         }}
       >
         {children}
