@@ -11,6 +11,7 @@ export const AppProvider = ({ children }) => {
   const apiUrl = process.env.REACT_APP_API_URL;
   const apiUrlImg = process.env.REACT_APP_API_URL_IMG;
   const apiTel = process.env.REACT_APP_API_URL_TELECHARGE;
+  const apiUrlCat = process.env.REACT_APP_API_URL_CATEGORIE;
 
   const [loading, setLoading] = useState(false);
 
@@ -34,6 +35,7 @@ export const AppProvider = ({ children }) => {
           apiUrl,
           loading,
           apiTel,
+          apiUrlCat,
         }}
       >
         {children}

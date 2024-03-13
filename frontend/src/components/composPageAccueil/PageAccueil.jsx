@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAppContext } from "../../context/AppContext";
 import { CardesTemplate } from "./CardesTemplate";
 import { FooterPageAcueil } from "./FooterPageAcueil";
-import { useTemplates } from "../../hook/useTemplates";
 import { TitrePage } from "./TitrePage";
+import { CategoriesList } from "./CategoriesList";
 
 export const PageAccueil = () => {
+
   const { darkMode, apiUrlImg } = useAppContext();
-  const { data: templates} = useTemplates("landing_page");
+  const [selectCat, setSelectCat] = useState(null);
+  const [selectTemp, setSelectTemp] = useState([]);
+  const ClicCategory = (categoryId, t) => {
+    setSelectCat(categoryId);
+    setSelectTemp(t);
+  };
   return (
     <div
       className={`min-h-[screen] h-full max-w-[1610px] ${
@@ -18,23 +24,24 @@ export const PageAccueil = () => {
         <div>
           <TitrePage Effect={darkMode ? "text-blanc" : " text-bl"} />
         </div>
-        <div className={`mt-8 flex justify-center w-full flex-wrap`}>
-          {templates?.map((temp) => (
+        <CategoriesList onSelectCategory={ClicCategory} />
+        <div className="mt-8 flex justify-center w-full flex-wrap">
+          {selectTemp.map((template) => (
             <CardesTemplate
-              key={temp.id}
-              HandlePreview={temp.aperçu}
-              imageTemplate={`${apiUrlImg}/${temp.image}`}
-              fonCardTemplate={temp.couleur_fond}
-              handlePriceTo={temp.aperçu}
-              titreCrdTemplate={temp.titre}
-              DesctiptionTemplate={temp.description}
-              prixTemplate={temp.prix === null ? "Free" : temp.prix}
-              telechargeLink={`/telecharge/${temp.id}`}
+              key={template.id}
+              HandlePreview={template.aperçu}
+              imageTemplate={`${apiUrlImg}/${template.image}`}
+              fonCardTemplate={template.couleur_fond}
+              handlePriceTo={template.aperçu}
+              titreCrdTemplate={template.titre}
+              DesctiptionTemplate={template.description}
+              prixTemplate={template.prix === null ? "Free" : template.prix}
+              telechargeLink={`/telecharge/${template.id}`}
             />
           ))}
         </div>
       </div>
-      <div className="">
+      <div>
         <FooterPageAcueil />
       </div>
     </div>

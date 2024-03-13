@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import { useAppContext } from "../context/AppContext";
 
 export const useTemplates = (type) => {
-  const { apiUrl} = useAppContext();
+  const { apiUrl } = useAppContext();
 
   return useQuery(["templates", type], async () => {
     const response = await fetch(`${apiUrl}/${type || ""}`);
@@ -15,4 +15,3 @@ export const useTemplates = (type) => {
     return response.json();
   });
 };
-
