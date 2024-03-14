@@ -11,7 +11,7 @@ export const CategoriesList = ({ onSelectCategory }) => {
     c.templates.find((t) => t.type_template === "landing_page")
   );
 
-  console.log(templateType);
+  // console.log(templateType);
 
   //
 
