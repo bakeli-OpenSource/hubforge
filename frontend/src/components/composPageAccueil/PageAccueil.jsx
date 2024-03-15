@@ -4,9 +4,9 @@ import { CardesTemplate } from "./CardesTemplate";
 import { FooterPageAcueil } from "./FooterPageAcueil";
 import { TitrePage } from "./TitrePage";
 import { CategoriesList } from "./CategoriesList";
+import Search from "./SearchFuction/Search";
 
 export const PageAccueil = () => {
-
   const { darkMode, apiUrlImg } = useAppContext();
   const [selectCat, setSelectCat] = useState(null);
   const [selectTemp, setSelectTemp] = useState([]);
@@ -24,6 +24,7 @@ export const PageAccueil = () => {
         <div>
           <TitrePage Effect={darkMode ? "text-blanc" : " text-bl"} />
         </div>
+          <Search/>
         <CategoriesList onSelectCategory={ClicCategory} />
         <div className="mt-8 flex justify-center w-full flex-wrap">
           {selectTemp.map((template) => (

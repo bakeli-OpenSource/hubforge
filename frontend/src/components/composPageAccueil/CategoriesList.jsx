@@ -26,6 +26,7 @@ export const CategoriesList = ({ onSelectCategory }) => {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
+
   useEffect(() => {
     if (categories && categories.length > 0 && !activeCat) {
       const ctgryTemp = categories.find((c) => c.templates.some(landingPage));
