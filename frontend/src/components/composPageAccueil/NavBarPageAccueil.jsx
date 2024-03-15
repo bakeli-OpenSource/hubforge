@@ -70,7 +70,7 @@ export const NavBarPageAccueil = () => {
                 <Link
                   to="/"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className={`block px-2 py-2 hover:text-vr text-xl ${isActive("/") && "border-b-vr rounded-s-xl border-b-[4px] text-rg font-bold "}`}
+                  className={`block px-2 py-2 hover:text-vr text-xl ${isActive("/") && " text-vr font-bold "}`}
                 >
                   Landing Pages
                 </Link>
@@ -79,7 +79,7 @@ export const NavBarPageAccueil = () => {
                 <Link
                   to="/dashbords"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className={`block px-2 py-2 hover:text-vr text-xl ${isActive("/dashbords") && "border-b-vr rounded-e-xl border-lr-radius border-b-[4px] text-rg font-bold "}`}
+                  className={`block px-2 py-2 hover:text-vr text-xl ${isActive("/dashbords") && " text-vr font-bold "}`}
                 >
                   Dashboards
                 </Link>
