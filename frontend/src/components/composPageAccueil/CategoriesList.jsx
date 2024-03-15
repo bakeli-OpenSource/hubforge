@@ -46,7 +46,6 @@ export const CategoriesList = ({ onSelectCategory }) => {
   return (
     <div>
       <h3 className="text-center pb-10 text-2xl">
-        {" "}
         Les catégories de Landing Pages
       </h3>
       <ul className="flex items-center gap-4 flex-wrap w-full justify-center">
