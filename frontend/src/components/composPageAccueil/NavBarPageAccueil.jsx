@@ -9,6 +9,8 @@ import { Link, useLocation } from "react-router-dom";
 export const NavBarPageAccueil = () => {
   const { darkMode, toggleDarkMode } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isActive = (path) => location.pathname === path;
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -63,21 +65,21 @@ export const NavBarPageAccueil = () => {
               darkMode ? "bg-gray-800" : "bg-white "
             } lg:w-auto lg:bg-transparent lg:backdrop-blur-none`}
           >
-            <ul className=" max-lg:-mt-80 group flex flex-col items-center gap-6 text-lg text-stone-000 dark:text-stone-300 lg:flex-row lg:gap-0 lg:text-sm ">
+            <ul className=" max-lg:-mt-80 group flex flex-col items-center gap-6 text-lg text-stone-000 dark:text-stone-300 lg:flex-row lg:gap-4 lg:text-sm ">
               <li className=" text-right transition duration-500 hover:text-stone-300 lg:text-left">
                 <Link
                   to="/"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="block px-6 py-1 hover:text-vr text-xl"
+                  className={`block px-2 py-2 hover:text-vr text-xl ${isActive("/") && " text-vr font-bold "}`}
                 >
-                  Templates
+                  Landing Pages
                 </Link>
               </li>
               <li className="text-right transition duration-500 hover:text-stone-300 lg:text-left">
                 <Link
                   to="/dashbords"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="block px-6 py-1 hover:text-vr text-xl"
+                  className={`block px-2 py-2 hover:text-vr text-xl ${isActive("/dashbords") && " text-vr font-bold "}`}
                 >
                   Dashboards
                 </Link>

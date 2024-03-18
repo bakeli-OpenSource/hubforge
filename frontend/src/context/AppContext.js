@@ -1,12 +1,19 @@
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { QueryClientProvider } from "react-query";
+import { queryClient } from "./queryClient";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const storedDarkMode = localStorage.getItem("darkMode");
   const [darkMode, setDarkMode] = useState(storedDarkMode === "true");
+  const [user, setUser] = useState(null);
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrlImg = process.env.REACT_APP_API_URL_IMG;
+  const apiTel = process.env.REACT_APP_API_URL_TELECHARGE;
+  const apiUrlCat = process.env.REACT_APP_API_URL_CATEGORIE;
 
-  const [user, setUser] = useState(null);// au besoin !!
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("darkMode", darkMode.toString());
@@ -15,14 +22,30 @@ export const AppProvider = ({ children }) => {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
-  //  Autres fonctions pour d'autres propriétés
+
   return (
-    <AppContext.Provider value={{ darkMode, toggleDarkMode, user, setUser }}>
-      {children}
-    </AppContext.Provider>
+    <QueryClientProvider client={queryClient}>
+      <AppContext.Provider
+        value={{
+          darkMode,
+          toggleDarkMode,
+          user,
+          setUser,
+          apiUrlImg,
+          apiUrl,
+          loading,
+          apiTel,
+          apiUrlCat,
+        }}
+      >
+        {children}
+      </AppContext.Provider>
+    </QueryClientProvider>
   );
 };
 
 export const useAppContext = () => {
-  return useContext(AppContext);
+  const ctx = useContext(AppContext)
+  if(!ctx) throw new Error("No context provided")
+  return ctx;
 };

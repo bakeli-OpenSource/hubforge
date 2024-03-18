@@ -20,7 +20,8 @@ module.exports = {
         blc: "#F8F9ff",
       },
       screens: {
-        xs: "480px",
+        xs: "250px",
+        xlm: "1780px",
       },
     },
   },

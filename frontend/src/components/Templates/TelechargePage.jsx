@@ -1,174 +1,120 @@
-// TelechargePage.jsx
-import React, { useState } from "react";
+// components/TelechargePage.js
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  CardsTemplateContenu,
-  CardsTemplateContenu2,
-} from "../Utils/UtilsTemplates";
-import { DetailsTemp, InstructionTemp, MonLink } from "../PageTemplate";
+import { DetailsTemp, MonLink } from "../PageTemplate";
 import { CodeChoix } from "./CodeChoix";
+import { useAppContext } from "../../context/AppContext";
+import { useTemplates } from "../../hook/useTemplates";
+import { usePostClic } from "../../hook/usePostClic";
 
 const TelechargePage = () => {
   const { templateId } = useParams();
-  const [carte1, setCarte1] = useState(true);
-  const [carte2, setCarte2] = useState(false);
-  let templateData;
-  const a = templateId;
-  const b = "template10";
-  const c = "template11";
+  const [clic, setClic] = useState(null);
+  const [clickCounts, setClickCounts] = useState(0);
+  const { apiUrlImg } = useAppContext();
+  const { data: templates } = useTemplates();
 
-  if (a === b || a === c) {
-    templateData = CardsTemplateContenu.find(
-      (template) => template.telechargeLink === `/telecharge/${a}`
-    );
-  } else if (
-    a === "template1" ||
-    a === "template2" ||
-    a === "template3" ||
-    a === "template4" ||
-    a === "template5" ||
-    a === "template6" ||
-    a === "template7" ||
-    a === "template8" ||
-    a === "template9"
-  ) {
-    templateData = CardsTemplateContenu2.find(
-      (template) => template.telechargeLink === `/telecharge/${templateId}`
-    );
-  }
+  const Data = templates?.find(
+    (template) => template.id === Number(templateId)
+  );
+  const tel = Data?.type_telechargements?.map((t) => t);
 
-  const TelechargeHtml = () => {
-    setCarte1(true);
-    setCarte2(false);
+  useEffect(() => {
+    if (tel && tel.length > 0 && clic === null) {
+      setClic(tel[0].id);
+    }
+  }, [tel, clic]);
+
+  const typeSelect = (type) => {
+    setClic((prev) => (prev === type ? null : type));
   };
-  const TelechargeReact = () => {
-    setCarte1(false);
-    setCarte2(true);
-  };
+
+  const postClicMutation = usePostClic();
 
   return (
     <div className="max-w-[1570px] ">
-      <div
-        className={`flex flex-wrap max-md:justify-center justify-between 
-         min-h-screen bg-blc w-full`}
-      >
-        <div className="w-[50%] max-md:w-full mb-2">
-          <DetailsTemp
-            imageTemp={templateData.imageTemplate}
-            titreCrdTemp={templateData.titreCrdTemplate}
-            DescriptTemp={templateData.DesctiptionTemplate}
-            prixTemplate={templateData.prixTemplate}
-            aprerçuTemp={templateData.HandlePreview}
-            Bordure={carte1 ? "border-vr" : "border-rg"}
-            Marge={a === b || a === c ? "max-xs:-mb-6" : ""}
-          />
-        </div>
+      {Data && (
+        <div className={`flex flex-wrap max-md:justify-center justify-between bg-blc w-full`}>
+          <div className="w-[50%] max-md:w-full mb-2">
+            <DetailsTemp
+              imageTemp={`${apiUrlImg}/${Data.image}`}
+              titreCrdTemp={Data.titre}
+              DescriptTemp={Data.description}
+              prixTemplate={Data.prix === null ? "Free" : Data.prix}
+              aprerçuTemp={Data.aperçu}
+            />
+          </div>
 
-        <div className=" w-[50%] max-md:w-full max-md:pt-0 pt-6 pe-6 flex bg-gray-200 ps-6 ">
-          <div className=" w-full max-md:mt-5">
-            <h2 className="text-mr font-medium text-xl max-md:text-xl">
-              Types de Code :
-            </h2>
+          <div className=" w-[50%] max-md:w-full md:h-screen max-md:pb-24 md:overflow-y-scroll max-md:pt-0 pt-6 pe-6  bg-gray-200 ps-6  ">
+            <div className=" w-full mt-20 max-md:mt-5">
+              <h2 className="text-mr font-medium text-xl max-md:text-xl">Types de Téléchargements :</h2>
 
-            <div className=" mt-4 bg-re0 w-full hidden max-md:ms-0 max-md:block">
-              {a !== b && a !== c && (
-                <div className={carte1 ? "block" : "hidden"}>
-                  <MonLink
-                    action={templateData.handleDownloadHtml}
-                    actionName={"Télécharger version version HTML"}
-                    BgColor={"bg-vr"}
-                  />
+              {tel.map((t) => (
+                <div className=" mt-4  pb-6 fixed bottom-0 w-[100%] bg-gray-200 pe-12 hidden max-md:ms-0 max-md:block" key={t.id}>
+                  <div className={clic === t.id ? "block" : "hidden"}>
+                    <MonLink
+                      action={t.telechargement}
+                      actionName={`Télécharger ${t.type_code}`}
+                      BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
+                      onClick={() => {
+                        setClickCounts(clickCounts + 1);
+                        postClicMutation.mutate({
+                          type_telechargement_id: clic,
+                          nom_type_telechargement: Data.nom,
+                        });
+                      }}
+                    />
+                    <p>Nombre de clics : {clickCounts}</p>
+                  </div>
                 </div>
-              )}
-              <div
-                className={carte2 || a === b || a === c ? "block" : "hidden"}
-              >
-                <MonLink
-                  action={templateData.handleBuy}
-                  actionName={"Télécharger version React.Js"}
-                  BgColor={"bg-rg"}
-                />
-              </div>
-            </div>
-            {a !== b && a !== c && (
-              <div
-                onClick={TelechargeHtml}
-                className={`  my-4 rounded-xl cursor-pointer ${
-                  carte1 ? "border-vr border-[3px]" : "border-gray-400 border "
-                }  `}
-              >
-                <CodeChoix
-                  condition1={carte1 ? "bg-vr" : ""}
-                  condition2={
-                    carte1
-                      ? " font-bold text-vr max-sm:text-sm  "
-                      : "text-mr font-medium "
-                  }
-                  TypeCode={"HTML - TailwindCss"}
-                  prixTemplate={templateData.prixTemplate}
-                />
+              ))}
 
-                <h2 className="text-mr flex font-medium ps-6 py-6 text-md">
-                  Version HTML - TailwindCss
-                </h2>
-              </div>
-            )}
-
-            {/*============================== React COde source ============================== */}
-
-            <div
-              onClick={TelechargeReact}
-              className={`my-4 rounded-xl cursor-pointer ${
-                carte2 || a === b || a === c
-                  ? "border-rg border-[3px]"
-                  : "border-gray-400 border "
-              }  `}
-            >
-              <CodeChoix
-                condition1={carte2 || a === b || a === c ? "bg-rg" : ""}
-                condition2={
-                  carte2
-                    ? "text-rg font-bold max-sm:text-sm "
-                    : "text-mr font-medium "
-                }
-                TypeCode={"React.Js - TailwindCss"}
-                prixTemplate={templateData.prixTemplate}
-              />
-
-              <h2 className="text-mr flex font-medium ps-6 py-6 text-md">
-                Version React.Js - TailwindCss
-              </h2>
-              <InstructionTemp
-                condition={
-                  a === b || a === c ? "npm run start:dev" : "npm start"
-                }
-              />
-            </div>
-
-            <div className="max-md:hidden w-full max-md:ms-0">
-              {a !== b && a !== c && (
-                <div className={carte1 ? "block" : "hidden"}>
-                  <MonLink
-                    action={templateData.handleDownloadHtml}
-                    actionName={"Télécharger version version HTML"}
-                    BgColor={"bg-vr"}
+              {tel.map((t) => (
+                <div
+                  key={t.id}
+                  onClick={() => typeSelect(t.id)}
+                  className={`my-4 rounded-xl cursor-pointer ${
+                    clic === t.id
+                      ? `border-[3px] ${t.id % 2 === 0 ? "border-rg " : "border-vr "}`
+                      : "border-gray-400 border "
+                  } `}
+                >
+                  <CodeChoix
+                    key={t.id}
+                    condition1={clic === t.id ? `${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}` : ""}
+                    condition2={clic === t.id ? `font-bold ${t.id % 2 === 0 ? "text-rg" : "text-vr"} max-sm:text-sm ` : "text-mr font-medium "}
+                    TypeCode={t.type_code}
+                    prixTemplate={Data.prix === null ? "Free" : Data.prix}
                   />
+                  <h2 className="text-mr pb-4 ps-5 text-lg">{t.type_code}</h2>
+                  <h2 className="text-mr pb-2 ps-5 text-md">Après le téléchargement du Template :</h2>
+                  <p className="px-5 pb-4 text-mr" dangerouslySetInnerHTML={{ __html: t.description }}></p>
                 </div>
-              )}
+              ))}
 
-              <div
-                className={carte2 || a === b || a === c ? "block" : "hidden"}
-              >
-                <MonLink
-                  action={templateData.handleBuy}
-                  actionName={"Télécharger version React.Js"}
-                  BgColor={"bg-rg"}
-                />
-              </div>
+              {tel.map((t) => (
+                <div className="max-md:hidden bg-gray-200 pt-6 fixed top-0 w-[50%] pe-16 max-md:ms-0" key={t.id}>
+                  <div className={clic === t.id ? "block" : "hidden"}>
+                    <MonLink
+                      action={t.telechargement}
+                      actionName={`Télécharger ${t.type_code}`}
+                      BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
+                      onClick={() => {
+                        setClickCounts(clickCounts + 1);
+                        postClicMutation.mutate({
+                          type_telechargement_id: clic,
+                          nom_type_telechargement: Data.nom,
+                        });
+                      }}
+                    />
+                    <p>Nombre de clics : {clickCounts}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

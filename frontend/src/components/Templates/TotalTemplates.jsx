@@ -1,23 +1,24 @@
 import React from "react";
 import { CardesTemplate } from "../composPageAccueil/CardesTemplate";
-import { CardsTemplateContenu } from "../Utils/UtilsTemplates";
-import { Link } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa6";
 import { useAppContext } from "../../context/AppContext";
 import { HubForgeHeader } from "../composPageAccueil/HubForgeHeader";
+import { PulseLoader } from "react-spinners";
+import { useTemplates } from "../../hook/useTemplates";
 
 export const TotalTemplates = () => {
-  const { darkMode } = useAppContext();
+  const { darkMode, apiUrlImg } = useAppContext();
+  const { data: templates } = useTemplates("dashboard");
+
   return (
     <div
-      className={`${darkMode ? " bg-gray-800  text-white" : "border-gray-100"}`}
+      className={`${darkMode ? "bg-gray-800 text-white" : "border-gray-100"}`}
     >
       <div>
         <HubForgeHeader
           TitrePage={
             <h1
               className={`text-center text-6xl max-sm:text-4xl font-bold leading-[66px] ${
-                darkMode ? "text-blanc" : " text-bl"
+                darkMode ? "text-blanc" : "text-bl"
               }`}
             >
               Dashboards
@@ -25,9 +26,20 @@ export const TotalTemplates = () => {
           }
         />
       </div>
-      <div className={`mt-8  flex justify-center w-full flex-wrap`}>
-        {CardsTemplateContenu.map((card, index) => (
-          <CardesTemplate {...card} key={index} />
+
+      <div className={`mt-8 flex justify-center w-full flex-wrap`}>
+        {templates?.map((temp) => (
+          <CardesTemplate
+            key={temp.id}
+            HandlePreview={temp.aperçu}
+            imageTemplate={`${apiUrlImg}/${temp.image}`}
+            fonCardTemplate={temp.couleur_fond}
+            handlePriceTo={temp.aperçu}
+            titreCrdTemplate={temp.titre}
+            DesctiptionTemplate={temp.description}
+            prixTemplate={temp.prix === null ? "Free" : temp.prix}
+            telechargeLink={`/telecharge/${temp.id}`}
+          />
         ))}
       </div>
     </div>

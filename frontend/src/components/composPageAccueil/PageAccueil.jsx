@@ -1,43 +1,48 @@
-import React from "react";
-import { FaArrowRight } from "react-icons/fa";
+import React, { useState } from "react";
 import { useAppContext } from "../../context/AppContext";
-import { CardsTemplateContenu2 } from "../Utils/UtilsTemplates";
 import { CardesTemplate } from "./CardesTemplate";
 import { FooterPageAcueil } from "./FooterPageAcueil";
-import { HubForgeHeader } from "./HubForgeHeader";
+import { TitrePage } from "./TitrePage";
+import { CategoriesList } from "./CategoriesList";
+import Search from "./SearchFuction/Search";
 
 export const PageAccueil = () => {
-  const { darkMode } = useAppContext();
+  const { darkMode, apiUrlImg } = useAppContext();
+  const [selectCat, setSelectCat] = useState(null);
+  const [selectTemp, setSelectTemp] = useState([]);
+  const ClicCategory = (categoryId, t) => {
+    setSelectCat(categoryId);
+    setSelectTemp(t);
+  };
   return (
     <div
-      className={`min-h-[132vw] h-full max-w-[1610px] ${
+      className={`min-h-[screen] h-full max-w-[1610px] ${
         darkMode ? "bg-gray-800 text-blanc" : "bg-blanc text-bl"
       }`}
     >
       <div className="w-full">
         <div>
-          <HubForgeHeader
-            TitrePage={
-              <h1
-                className={`policeTitre text-center text-6xl max-sm:text-3xl font-[800] 
-                leading-[70px] max-sm:leading-[45px]  max-sm:tracking-wider  ${
-                  darkMode ? "text-blanc" : " text-bl"
-                }`}
-              >
-                Transformez votre <br />
-                <span>vision en réalité </span> <br />
-                <span>simplement</span>
-              </h1>
-            }
-          />
+          <TitrePage Effect={darkMode ? "text-blanc" : " text-bl"} />
         </div>
-        <div className={`mt-8 flex justify-center w-full flex-wrap`}>
-          {CardsTemplateContenu2.map((card, index) => (
-            <CardesTemplate {...card} key={index} />
+          <Search/>
+        <CategoriesList onSelectCategory={ClicCategory} />
+        <div className="mt-8 flex justify-center w-full flex-wrap">
+          {selectTemp.map((template) => (
+            <CardesTemplate
+              key={template.id}
+              HandlePreview={template.aperçu}
+              imageTemplate={`${apiUrlImg}/${template.image}`}
+              fonCardTemplate={template.couleur_fond}
+              handlePriceTo={template.aperçu}
+              titreCrdTemplate={template.titre}
+              DesctiptionTemplate={template.description}
+              prixTemplate={template.prix === null ? "Free" : template.prix}
+              telechargeLink={`/telecharge/${template.id}`}
+            />
           ))}
         </div>
       </div>
-      <div className="">
+      <div>
         <FooterPageAcueil />
       </div>
     </div>
