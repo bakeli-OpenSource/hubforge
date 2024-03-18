@@ -4,11 +4,9 @@ import { useCategories } from "../../../hook/useCategories";
 import { IoIosSearch } from "react-icons/io";
 
 export default function Search() {
-
   const { darkMode } = useAppContext();
-  const categoryTemp = useCategories();
-  const categories = categoryTemp?.categories;
-  console.log("tester", categories);
+  // const categoryTemp = useCategories();
+  // const categories = categoryTemp?.categories;
 
   return (
     <form className="max-w-xl mx-auto mb-3 ">
