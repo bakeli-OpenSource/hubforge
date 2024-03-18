@@ -64,7 +64,6 @@ const TelechargePage = () => {
                         });
                       }}
                     />
-                    <p>Nombre de clics : {clickCounts}</p>
                   </div>
                 </div>
               ))}
@@ -107,7 +106,6 @@ const TelechargePage = () => {
                         });
                       }}
                     />
-                    <p>Nombre de clics : {clickCounts}</p>
                   </div>
                 </div>
               ))}
