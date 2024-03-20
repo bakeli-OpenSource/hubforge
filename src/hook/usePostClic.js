@@ -1,4 +1,4 @@
-// hook/usePostClic.js
+
 import { useMutation } from "react-query";
 import { useAppContext } from "../context/AppContext";
 

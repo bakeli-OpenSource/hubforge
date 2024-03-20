@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
 import Logo from "./images/Logo.png";
@@ -38,7 +38,7 @@ export default function ChompRestaurant() {
 
         <header className="bg-white">
           <div className="mx-auto w-100 px-[37.8px] py-[20px] sm:px-6 lg:px-8 h-[100px]">
-            <div className="flex h-16 items-center justify-between h-[60px]">
+            <div className="flex  items-center justify-between h-[60px]">
               <div className="flex-1 md:flex md:items-center">
                 <a className="block text-teal-600" href="/">
                   <span className="sr-only">Accueil</span>
@@ -144,7 +144,7 @@ export default function ChompRestaurant() {
               festin de délices!
             </p>
             <Link
-              className="flex align-center items-center text-center w-[210px] h-[70px] inline-block rounded-[10px] border text-[19px] px-[50px] py-[22px] mb-[30px] text-md font-medium text-white bg-red-500"
+              className="flex align-center items-center text-center w-[210px] h-[70px]  rounded-[10px] border text-[19px] px-[50px] py-[22px] mb-[30px] text-md font-medium text-white bg-red-500"
               to="#"
             >
               Commander
@@ -180,7 +180,7 @@ export default function ChompRestaurant() {
               notre oasis gastronomique, le foyer des produits frais.
             </p>
             <Link
-              className="flex align-center items-center text-center w-[210px] h-[70px] inline-block rounded-[10px] border text-[19px] px-[35px] py-[22px] mb-[30px] text-md font-medium text-white bg-red-500"
+              className="flex align-center items-center text-center w-[210px] h-[70px] rounded-[10px] border text-[19px] px-[35px] py-[22px] mb-[30px] text-md font-medium text-white bg-red-500"
               to="#"
             >
               Learn about us
@@ -273,19 +273,19 @@ export default function ChompRestaurant() {
               </p>
               <div className="button flex flex-row justify-around align-center m-[50px]">
                 <Link
-                  className="flex align-center items-center text-center w-[160px] h-[60px] inline-block rounded-[10px] border text-[19px] px-[35px] py-[9px] mx-[15px] text-md font-medium bg-white hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
+                  className="flex align-center items-center text-center w-[160px] h-[60px] rounded-[10px] border text-[19px] px-[35px] py-[9px] mx-[15px] text-md font-medium bg-white hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
                   to="#"
                 >
                   Hamburger
                 </Link>
                 <Link
-                  className="flex align-center items-center text-center w-[160px] h-[60px] inline-block rounded-[10px] border text-[19px] px-[35px] py-[9px] mx-[15px] text-md font-medium bg-white hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
+                  className="flex align-center items-center text-center w-[160px] h-[60px]  rounded-[10px] border text-[19px] px-[35px] py-[9px] mx-[15px] text-md font-medium bg-white hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
                   to="#"
                 >
                   Garnitures
                 </Link>
                 <Link
-                  className="flex align-center items-center text-center w-[160px] h-[60px] inline-block rounded-[10px] border text-[19px] px-[45px] py-[9px] mx-[15px] text-md font-medium bg-white hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
+                  className="flex align-center items-center text-center w-[160px] h-[60px] rounded-[10px] border text-[19px] px-[45px] py-[9px] mx-[15px] text-md font-medium bg-white hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
                   to="#"
                 >
                   Boissons
@@ -316,7 +316,7 @@ export default function ChompRestaurant() {
                       className="w-[60px] h-[50px] text-center me-[8px] p-[8px 6px 8px 12px] border border-gray bg-[#FAFAFA] rounded-[5px] focus:border-blue-500"
                     />
                     <Link
-                      className="flex align-center items-center text-center text-white w-[155px] h-[50px] inline-block rounded-[10px] border text-[19px] px-[25px] py-[9px] bg-red-500"
+                      className="flex align-center items-center text-center text-white w-[155px] h-[50px]  rounded-[10px] border text-[19px] px-[25px] py-[9px] bg-red-500"
                       to="#"
                     >
                       Commander
@@ -347,7 +347,7 @@ export default function ChompRestaurant() {
                       className="w-[60px] h-[50px] text-center me-[8px] p-[8px 6px 8px 12px] border border-gray bg-[#FAFAFA] rounded-[5px] focus:border-blue-500"
                     />
                     <Link
-                      className="flex align-center items-center text-center text-white w-[155px] h-[50px] inline-block rounded-[10px] border text-[19px] px-[25px] py-[9px] bg-red-500"
+                      className="flex align-center items-center text-center text-white w-[155px] h-[50px]  rounded-[10px] border text-[19px] px-[25px] py-[9px] bg-red-500"
                       to="#"
                     >
                       Commander
@@ -378,7 +378,7 @@ export default function ChompRestaurant() {
                       className="w-[60px] h-[50px] text-center me-[8px] p-[8px 6px 8px 12px] border border-gray bg-[#FAFAFA] rounded-[5px] focus:border-blue-500"
                     />
                     <Link
-                      className="flex align-center items-center text-center text-white w-[155px] h-[50px] inline-block rounded-[10px] border text-[19px] px-[25px] py-[9px] bg-red-500"
+                      className="flex align-center items-center text-center text-white w-[155px] h-[50px]  rounded-[10px] border text-[19px] px-[25px] py-[9px] bg-red-500"
                       to="#"
                     >
                       Commander
@@ -409,7 +409,7 @@ export default function ChompRestaurant() {
                       className="w-[60px] h-[50px] text-center me-[8px] p-[8px 6px 8px 12px] border border-gray bg-[#FAFAFA] rounded-[5px] focus:border-blue-500"
                     />
                     <Link
-                      className="flex align-center items-center text-center text-white w-[155px] h-[50px] inline-block rounded-[10px] border text-[19px] px-[25px] py-[9px] bg-red-500"
+                      className="flex align-center items-center text-center text-white w-[155px] h-[50px]  rounded-[10px] border text-[19px] px-[25px] py-[9px] bg-red-500"
                       to="#"
                     >
                       Commander
@@ -440,7 +440,7 @@ export default function ChompRestaurant() {
                       className="w-[60px] h-[50px] text-center me-[8px] p-[8px 6px 8px 12px] border border-gray bg-[#FAFAFA] rounded-[5px] focus:border-blue-500"
                     />
                     <Link
-                      className="flex align-center items-center text-center text-white w-[155px] h-[50px] inline-block rounded-[10px] border text-[19px] px-[25px] py-[9px] bg-red-500"
+                      className="flex align-center items-center text-center text-white w-[155px] h-[50px] rounded-[10px] border text-[19px] px-[25px] py-[9px] bg-red-500"
                       to="#"
                     >
                       Commander
@@ -471,7 +471,7 @@ export default function ChompRestaurant() {
                       className="w-[60px] h-[50px] text-center me-[8px] p-[8px 6px 8px 12px] border border-gray bg-[#FAFAFA] rounded-[5px] focus:border-blue-500"
                     />
                     <Link
-                      className="flex align-center items-center text-center text-white w-[155px] h-[50px] inline-block rounded-[10px] border text-[19px] px-[25px] py-[9px] bg-red-500"
+                      className="flex align-center items-center text-center text-white w-[155px] h-[50px]  rounded-[10px] border text-[19px] px-[25px] py-[9px] bg-red-500"
                       to="#"
                     >
                       Commander
@@ -481,7 +481,7 @@ export default function ChompRestaurant() {
               </div>
             </div>
             <Link
-              className="flex align-center items-center text-center w-[210px] h-[70px] inline-block rounded-[10px] border text-[19px] px-[40px] py-[22px] my-[40px] mx-auto text-xl font-medium text-white bg-red-500"
+              className="flex align-center items-center text-center w-[210px] h-[70px]  rounded-[10px] border text-[19px] px-[40px] py-[22px] my-[40px] mx-auto text-xl font-medium text-white bg-red-500"
               to="#"
             >
               Plus de menu
@@ -504,7 +504,7 @@ export default function ChompRestaurant() {
               et rapidité grâce à notre processus de paiement simplifié.
             </p>
             <Link
-              className="flex align-center items-center text-center w-[210px] h-[70px] inline-block rounded-[10px] border text-[19px] px-[35px] py-[22px] mb-[30px] text-md font-medium text-white bg-red-500"
+              className="flex align-center items-center text-center w-[210px] h-[70px]  rounded-[10px] border text-[19px] px-[35px] py-[22px] mb-[30px] text-md font-medium text-white bg-red-500"
               to="#"
             >
               Voir notre FAQ
@@ -523,7 +523,7 @@ export default function ChompRestaurant() {
               convenance
             </p>
             <Link
-              className="flex align-center items-center text-center w-[250px] h-[70px] inline-block rounded-[10px] border text-[19px] px-[45px] py-[22px] mb-[30px] text-md font-medium text-white bg-red-500"
+              className="flex align-center items-center text-center w-[250px] h-[70px]  rounded-[10px] border text-[19px] px-[45px] py-[22px] mb-[30px] text-md font-medium text-white bg-red-500"
               to="#"
             >
               Ph. +61 233 2333
@@ -535,16 +535,7 @@ export default function ChompRestaurant() {
           ></div>
         </div>
 
-        {/* <div className="bg-[#F5FBFE] md:flex md:items-center h-[100%] py-[100px] px-[40px]">
-          <div
-            className="secContentD2 bg-no-repeat bg-center bg-contain h-screen lg:w-[50%] sm:w-[100%]"
-            style={{ backgroundImage: `url(${FoodTakeaway})` }}
-          ></div>
-          <div
-            className="secContentD2 bg-no-repeat bg-center bg-contain h-screen lg:w-[50%] sm:w-[100%]"
-            style={{ backgroundImage: `url(${FoodTakeaway})` }}
-          ></div>
-        </div> */}
+
       </div>
     </>
   );

@@ -2,7 +2,6 @@ import React from "react";
 import { CardesTemplate } from "../composPageAccueil/CardesTemplate";
 import { useAppContext } from "../../context/AppContext";
 import { HubForgeHeader } from "../composPageAccueil/HubForgeHeader";
-import { PulseLoader } from "react-spinners";
 import { useTemplates } from "../../hook/useTemplates";
 
 export const TotalTemplates = () => {

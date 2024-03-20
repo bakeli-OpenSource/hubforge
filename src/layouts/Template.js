@@ -4,10 +4,10 @@ import { PageAccueil } from '../components/composPageAccueil/PageAccueil'
 export const Template = () => {
   return (
     <div>
-      <div className=''>
+      <div>
         <PageAccueil/>
       </div>
-      <div className="">
+      <div>
         <Outlet/>
       </div>
     </div>

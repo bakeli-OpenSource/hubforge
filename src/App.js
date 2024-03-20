@@ -1,4 +1,4 @@
-// App.jsx
+
 import React from "react";
 import "./App.css";
 import { PageTemplate4 } from "./components/PageTemplate";
