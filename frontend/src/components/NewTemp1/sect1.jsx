@@ -13,7 +13,7 @@ export default function Sect1() {
       <section className="py-0" id="home">
         <div className="bg-holder flex items-center bg-no-repeat d-none md:block bg-right-top bg-contain h-screen"style={{backgroundImage:`url(${BackgroundImage})`}}>
           <div className="pt-28 px-8 max-sm:pt-64 md:min-h-0">
-            <div className="w-7/12 w-6/12 md:w-full max-sm:w-full max-lg-full max-lg:mt-[400px] px-2 py-6 text-center md:text-left">
+            <div className="w-7/12  md:w-full max-sm:w-full max-lg-full max-lg:mt-[400px] px-2 py-6 text-center md:text-left">
               <h1 className="mt-6 mb-4 text-4xl md:text-6xl lg:text-7xl font-semibold leading-snug md:leading-normal">Today's research, <br className="block lg:hidden xl:block"/>tomorrow's innovation</h1>
               <p className="mb-4 text-xl">Accelerating research discovery to shape a better future </p>
               <div className="pt-3">

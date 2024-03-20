@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BiLoaderCircle } from "react-icons/bi";
 import { useAppContext } from "../../context/AppContext";
 

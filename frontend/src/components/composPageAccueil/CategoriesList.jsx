@@ -6,12 +6,10 @@ export const CategoriesList = ({ onSelectCategory }) => {
   const categoryTemp = useCategories(onSelectCategory);
   const categories = categoryTemp?.categories;
   const [activeCat, setActiveCat] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const currentPage = 1;
   const [showDropdown, setShowDropdown] = useState(false);
   const [nombreCat, setNombreCat] = useState(3);
   const landingPage = (t) => t.type_template === "landing_page";
-
-  console.log("revoir = ", categoryTemp);
 
   useEffect(() => {
     const resize = () => {
@@ -33,11 +31,10 @@ export const CategoriesList = ({ onSelectCategory }) => {
       const ctgryTemp = categories.find((c) => c.templates.some(landingPage));
       if (ctgryTemp) {
         setActiveCat(ctgryTemp.id);
-        onSelectCategory(ctgryTemp.id, ctgryTemp.templates);
+        onSelectCategory(ctgryTemp.id, ctgryTemp.templates.filter(landingPage));
       }
     }
   }, [categories, onSelectCategory, activeCat]);
-  console.log('tester', categories);
 
   const selectCat = (catId) => {
     const clicCat = categories.find((cat) => cat.id === catId);

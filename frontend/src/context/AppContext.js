@@ -34,6 +34,7 @@ export const AppProvider = ({ children }) => {
           apiUrlImg,
           apiUrl,
           loading,
+          setLoading,
           apiTel,
           apiUrlCat,
         }}
