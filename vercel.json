@@ -1,0 +1,10 @@
+{
+  "build": {
+    "env": {
+      "REACT_APP_API_URL": "",
+      "REACT_APP_API_URL_IMG": "",
+      "REACT_APP_API_URL_TELECHARGE": "",
+      "REACT_APP_API_URL_CATEGORIE": ""
+    }
+  }
+}
