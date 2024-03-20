@@ -33,8 +33,15 @@ Assurez-vous d'avoir Node.js installé sur votre machine.
 Pour exécuter l'application localement, utilisez la commande suivante à partir du répertoire racine du projet.:
 
 1. Lancer le projet
-    ```bash
-    npm start
+
+##### Lancer le projet en Local
+
+    npm run start:dev
+
+
+##### Lancer le projet en Production
+
+    npm run start:prod
 
 L'application sera accessible à l'adresse suivante : http://localhost:3000.
 
