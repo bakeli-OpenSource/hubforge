@@ -18,7 +18,7 @@ export const NavBarPageAccueil = () => {
 
   return (
     <div>
-      <div className=" mx-auto pt-5 max-sm:pt-4 max-w-screen-xl ">
+      <div className=" mx-auto pt-2 max-sm:pt-1 max-w-screen-xl ">
         <div className="flex flex-wrap justify-between lg:items-center">
           <div
             className="relative z-30  flex w-full items-center justify-between 
@@ -47,7 +47,7 @@ export const NavBarPageAccueil = () => {
               <button
                 aria-label="hamburger"
                 id="hamburger"
-                className="-mr-6 p-6 lg:hidden"
+                className="-mr-6 px-6 py-1 lg:hidden"
                 onClick={toggleMenu}
               >
                 <HiMenuAlt4 className="text-[45px]" />
