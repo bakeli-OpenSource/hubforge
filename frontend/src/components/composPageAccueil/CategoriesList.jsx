@@ -8,8 +8,10 @@ export const CategoriesList = ({ onSelectCategory }) => {
   const [activeCat, setActiveCat] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [nombreCat, setNombreCat] = useState(3); // Initial value
+  const [nombreCat, setNombreCat] = useState(3);
   const landingPage = (t) => t.type_template === "landing_page";
+
+  console.log("revoir = ", categoryTemp);
 
   useEffect(() => {
     const resize = () => {
@@ -25,7 +27,6 @@ export const CategoriesList = ({ onSelectCategory }) => {
     resize();
     return () => window.removeEventListener("resize", resize);
   }, []);
-
 
   useEffect(() => {
     if (categories && categories.length > 0 && !activeCat) {
