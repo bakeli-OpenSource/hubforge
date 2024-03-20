@@ -103,7 +103,7 @@ export const CardsTemplateContenu2 = [
     handleBuy:
       "https://github.com/barrymamadou12345/HubForgeTEMPLATES/archive/refs/heads/ClaireObscure.zip",
     handleDownloadHtml:
-      "https://github.com/Cheikh-Ahmed-Tidiane-Gueye/Aria/archive/refs/heads/TelechargerAria.zip",
+      "https://github.czipom/Cheikh-Ahmed-Tidiane-Gueye/Aria/archive/refs/heads/TelechargerAria.zip",
     imageTemplate: Template5,
     fonCardTemplate: "bg-[#7cc9cc60]",
     titreCrdTemplate: " ClaireObscure",
@@ -117,7 +117,7 @@ export const CardsTemplateContenu2 = [
     handleBuy:
       "https://github.com/barrymamadou12345/HubForgeTEMPLATES/archive/refs/heads/Ampire.zip",
     handleDownloadHtml:
-      "https://github.com/Cheikh-Ahmed-Tidiane-Gueye/Ampire/archive/refs/heads/TelechargerAmpire.zip",
+      "https://github.com/Cheikh-Ahmed-Tidiane-Gueye/Ampire/archive/refs/heads/TelechargerAmpire.",
     imageTemplate: Template6,
     fonCardTemplate: "bg-[#cc7cc740]",
     titreCrdTemplate: " Ampire ",

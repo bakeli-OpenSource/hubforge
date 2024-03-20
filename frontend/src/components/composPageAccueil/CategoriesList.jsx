@@ -37,6 +37,7 @@ export const CategoriesList = ({ onSelectCategory }) => {
       }
     }
   }, [categories, onSelectCategory, activeCat]);
+  console.log('tester', categories);
 
   const selectCat = (catId) => {
     const clicCat = categories.find((cat) => cat.id === catId);
