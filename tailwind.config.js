@@ -18,6 +18,7 @@ module.exports = {
         gr: "#AAAABC",
         mr: "#412728c9",
         blc: "#F8F9ff",
+        grc: "#ECF1FF",
       },
       screens: {
         xs: "250px",

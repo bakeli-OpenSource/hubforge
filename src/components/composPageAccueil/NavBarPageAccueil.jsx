@@ -18,7 +18,7 @@ export const NavBarPageAccueil = () => {
 
   return (
     <div>
-      <div className=" mx-auto pt-5 max-sm:pt-4 max-w-screen-xl ">
+      <div className=" mx-auto pt-2 max-sm:pt-1 max-w-screen-xl ">
         <div className="flex flex-wrap justify-between lg:items-center">
           <div
             className="relative z-30  flex w-full items-center justify-between 
@@ -47,7 +47,7 @@ export const NavBarPageAccueil = () => {
               <button
                 aria-label="hamburger"
                 id="hamburger"
-                className="-mr-6 p-6 lg:hidden"
+                className="-mr-6 px-6 py-1 lg:hidden"
                 onClick={toggleMenu}
               >
                 <HiMenuAlt4 className="text-[45px]" />
@@ -70,7 +70,7 @@ export const NavBarPageAccueil = () => {
                 <Link
                   to="/"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className={`block px-2 py-2 hover:text-vr text-xl ${isActive("/") && " text-vr font-bold "}`}
+                  className={`block px-2 hover:text-vr text-[16px] ${isActive("/") && " text-vr font-bold "}`}
                 >
                   Landing Pages
                 </Link>
@@ -79,13 +79,13 @@ export const NavBarPageAccueil = () => {
                 <Link
                   to="/dashbords"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className={`block px-2 py-2 hover:text-vr text-xl ${isActive("/dashbords") && " text-vr font-bold "}`}
+                  className={`block px-2 hover:text-vr text-[16px] ${isActive("/dashbords") && " text-vr font-bold "}`}
                 >
                   Dashboards
                 </Link>
               </li>
 
-              <li className="text-right transition duration-500 hover:text-stone-300 lg:text-left">
+              <li className="text-right  transition duration-500 hover:text-stone-300 lg:text-left">
                 <button
                   onClick={toggleDarkMode}
                   className="ms-4 hidden lg:block"
@@ -96,6 +96,16 @@ export const NavBarPageAccueil = () => {
                     <BsFillMoonStarsFill className="text-2xl hover:text-vr" />
                   )}
                 </button>
+              </li>
+
+              <li className="text-right ms-3 hover:scale-95 rounded-full bg-bl py-2 transition duration-500 hover:text-stone-300 lg:text-left">
+                <Link
+                  to="/connexion"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className={`block px-3 text-blc text-[16px] ${isActive("/connexion") && " text-blc"}`}
+                >
+                  Devenir Worker
+                </Link>
               </li>
             </ul>
           </div>
