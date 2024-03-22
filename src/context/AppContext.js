@@ -13,7 +13,9 @@ export const AppProvider = ({ children }) => {
   const apiTel = process.env.REACT_APP_API_URL_TELECHARGE;
   const apiUrlCat = process.env.REACT_APP_API_URL_CATEGORIE;
 
+  
   const [loading, setLoading] = useState(false);
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("darkMode", darkMode.toString());
@@ -21,6 +23,10 @@ export const AppProvider = ({ children }) => {
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
+  };
+
+  const toggleSearchModal = () => {
+    setSearchModalOpen(!searchModalOpen);
   };
 
   return (
@@ -37,6 +43,8 @@ export const AppProvider = ({ children }) => {
           setLoading,
           apiTel,
           apiUrlCat,
+          searchModalOpen,
+          toggleSearchModal,
         }}
       >
         {children}
