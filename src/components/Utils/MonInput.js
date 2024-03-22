@@ -43,7 +43,7 @@ const MonInput = ({
         <input
           type={type}
           id={id}
-          className={`text-black text-opacity-90 ${paddingB} border-gr focus:border-vr px-2 rounded-xl py-3 border focus:outline-none w-full`}
+          className={`text-black text-opacity-90 ${paddingB} border-gr focus:border-vr px-2 rounded-xl py-3 border focus:border-2 focus:outline-none w-full`}
           aria-label={label}
           value={value}
           onChange={onChange}

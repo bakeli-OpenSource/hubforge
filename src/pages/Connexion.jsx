@@ -17,7 +17,7 @@ export const Connexion = () => {
   const navigate = useNavigate();
   const [emailError, setEmailError] = useState("");
   const [PasswordError, setPasswordError] = useState("");
-  const [maskBtn, SetMaskBtn] = useState(true);
+  const [maskBtn, setMaskBtn] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async () => {
@@ -42,7 +42,7 @@ export const Connexion = () => {
   };
 
   const btnStatus = () => {
-    SetMaskBtn(emailError !== "" || isLoading || PasswordError);
+    setMaskBtn(emailError !== "" || isLoading || PasswordError);
   };
 
   return (
@@ -98,7 +98,7 @@ export const Connexion = () => {
           />
 
           <MonBouton
-            textColor={` mt-6 hover:scale-[97%] transition-all duration-500 w-full rounded-full py-2 text-xl ${
+            textColor={` mt-6 hover:scale-[97%] transition-all duration-500 w-full rounded-full py-3 text-xl ${
               emailError !== "" || isLoading ? "hidden" : ""
             }`}
             couleurFond="bg-bl text-blc"
