@@ -35,6 +35,10 @@ export const CategoriesList = ({ onSelectCategory }) => {
       }
     }
   }, [categories, onSelectCategory, activeCat]);
+<<<<<<< HEAD
+  console.log("tester", categories);
+=======
+>>>>>>> d51ff32c548938b6165eb3031bd7f673c1669d09
 
   const selectCat = (catId) => {
     const clicCat = categories.find((cat) => cat.id === catId);
@@ -64,7 +68,11 @@ export const CategoriesList = ({ onSelectCategory }) => {
         {currentCategTemp?.map((category) => (
           <li
             key={category.id}
-            className={`max-sm:text-sm  cursor-pointer hover:bg-blc  p-2 px-3 rounded-3xl ${activeCat === category.id ? "text-bl font-bold bg-[#ffffff] " : "text-mr"}`}
+            className={`max-sm:text-sm  cursor-pointer hover:bg-blc  p-2 px-3 rounded-3xl ${
+              activeCat === category.id
+                ? "text-bl font-bold bg-[#ffffff] "
+                : "text-mr"
+            }`}
             onClick={() => selectCat(category.id)}
           >
             {category.nom_categorie}
@@ -72,7 +80,9 @@ export const CategoriesList = ({ onSelectCategory }) => {
         ))}
         {categTemp?.length > nombreCat && (
           <li
-            className={`cursor-pointer flex items-center  ${showDropdown ? "font-bold text-blc bg-vr" : "text-bl font-bold"} p-2 px-3 rounded-3xl hover:scale-105 transition-all duration-500  `}
+            className={`cursor-pointer flex items-center  ${
+              showDropdown ? "font-bold text-blc bg-vr" : "text-bl font-bold"
+            } p-2 px-3 rounded-3xl hover:scale-105 transition-all duration-500  `}
             onClick={toggleDropdown}
           >
             Plus <BiCaretDown />
@@ -84,7 +94,11 @@ export const CategoriesList = ({ onSelectCategory }) => {
           {remainingCategTemp?.map((category) => (
             <li
               key={category.id}
-              className={`max-sm:text-sm text-nowrap cursor-pointer hover:bg-blc mb-1 p-2 px-3 rounded-xl ${activeCat === category.id ? "text-bl font-bold bg-[#ffffff] " : "text-mr"}`}
+              className={`max-sm:text-sm text-nowrap cursor-pointer hover:bg-blc mb-1 p-2 px-3 rounded-xl ${
+                activeCat === category.id
+                  ? "text-bl font-bold bg-[#ffffff] "
+                  : "text-mr"
+              }`}
               onClick={() => selectCat(category.id)}
             >
               {category.nom_categorie}
