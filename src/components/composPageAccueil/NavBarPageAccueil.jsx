@@ -5,6 +5,7 @@ import { BsFillMoonStarsFill } from "react-icons/bs";
 import { MdLightMode } from "react-icons/md";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { Link, useLocation } from "react-router-dom";
+import Search from "./SearchFuction/Search";
 
 export const NavBarPageAccueil = () => {
   const { darkMode, toggleDarkMode } = useAppContext();
@@ -33,6 +34,9 @@ export const NavBarPageAccueil = () => {
               <BiLoaderCircle className={`text-[37px] me-3`} />
               <p className="text-2xl font-[500]">HubForge</p>
             </a>
+            {/* <div className="search mx-5">
+              <Search />
+            </div> */}
             <div className="flex items-center sm:gap-4">
               <button
                 onClick={toggleDarkMode}
@@ -98,6 +102,11 @@ export const NavBarPageAccueil = () => {
                 </button>
               </li>
 
+              <div className="search ms-2">
+                <Search />
+              </div>
+
+
               <li className="text-right ms-3 hover:scale-95 rounded-full bg-bl py-2 transition duration-500 hover:text-stone-300 lg:text-left">
                 <Link
                   to="/connexion"
@@ -107,6 +116,7 @@ export const NavBarPageAccueil = () => {
                   Devenir Worker
                 </Link>
               </li>
+
             </ul>
           </div>
         </div>

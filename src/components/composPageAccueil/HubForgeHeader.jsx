@@ -8,6 +8,7 @@ export const HubForgeHeader = ({ directionPage, Bouton, TitrePage }) => {
   return (
     <div>
       <div
+        
         className={`border-b-2 max-sm:px-4 px-20 max-sm:border-0 pb-3 ${
           darkMode ? " border-gray-700" : "border-gray-100"
         }`}
