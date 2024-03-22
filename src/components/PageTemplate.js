@@ -8,13 +8,12 @@ export const PageTemplate4 = () => {
     </div>
   );
 };
-export const MonLink = ({ action,onClick, actionName, BgColor }) => {
+export const MonLink = ({ action, onClick, actionName, BgColor }) => {
   return (
     <Link
       to={action}
       onClick={onClick}
-
-      className={`  ${BgColor} w-full focus:scale-90 focus:bg-gr focus:border-2 transition-all duration-500 text-blanc  text-xl rounded-2xl flex items-center justify-center text-nowrap max-lg:text-sm  h-[60px] px-5`}
+      className={`  ${BgColor} w-full focus:scale-90  focus:bg-gr focus:border-2 transition-all duration-500 text-blanc  text-xl rounded-2xl flex items-center justify-center text-nowrap max-lg:text-sm font-bold h-[60px] px-5`}
     >
       {actionName}
     </Link>
@@ -42,21 +41,21 @@ export const DetailsTemp = ({
 
       <div className="mt-6">
         <h1 className="text-mr text-xl max-md:text-sm">
-          <span className="text-lg font-medium  text-mr max-sm:text-md ">
+          <span className="text-lg font-bold pe-2 text-mr max-sm:text-md ">
             Titre :
           </span>
           {titreCrdTemp}
         </h1>
 
         <h2 className="text-mr text-lg max-md:text-sm">
-          <span className="text-lg font-medium max-sm:text-md pe-3 text-mr ">
+          <span className="text-lg font-bold max-sm:text-md pe-2 text-mr ">
             Description :
           </span>
           {DescriptTemp}
         </h2>
 
         <h3 className="flex items-center pt-1 text-vr  text-lg max-md:text-xl">
-          <span className="text-lg font-medium pe-3 text-mr ">Prix :</span>
+          <span className="text-lg font-bold pe-2 text-mr ">Prix : </span>
           {prixTemplate}
         </h3>
         <a

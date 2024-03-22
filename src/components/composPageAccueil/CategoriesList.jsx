@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useAppContext } from "../../context/AppContext";
 import { useCategories } from "../../hook/useCategories";
 import { BiCaretDown } from "react-icons/bi";
 
@@ -10,6 +11,23 @@ export const CategoriesList = ({ onSelectCategory }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [nombreCat, setNombreCat] = useState(3);
   const landingPage = (t) => t.type_template === "landing_page";
+  
+  // Création du tableau contenant la liste des catégories present "tabcat"
+  const [tabcat, setTabcat] = useState([]);
+  const { updateTabcat } = useAppContext();
+  // useEffect(() => {
+  //   // Mettre à jour le tableau "tabcat" lors du changement de la variable categories
+  //   setTabcat(categories);
+  // }, [categories]);
+  useEffect(() => {
+    // Mettre à jour le tableau "tabcat" lors du changement de la variable categories
+    setTabcat(categories);
+    if (categories) {
+      updateTabcat(categories); // Mettez à jour tabcat lorsque categories change
+    }
+  }, [categories, updateTabcat]);
+
+  console.log("tabcat:", tabcat);
 
   useEffect(() => {
     const resize = () => {
@@ -35,6 +53,7 @@ export const CategoriesList = ({ onSelectCategory }) => {
       }
     }
   }, [categories, onSelectCategory, activeCat]);
+  // console.log("tester", categories);
 
   const selectCat = (catId) => {
     const clicCat = categories.find((cat) => cat.id === catId);
@@ -58,13 +77,28 @@ export const CategoriesList = ({ onSelectCategory }) => {
     setShowDropdown((prev) => !prev);
   };
 
+  useEffect(() => {
+    if (categories) {
+      const mappedCategories = categories.map((category) => ({
+        id: category.id,
+        nom_categorie: category.nom_categorie,
+      }));
+      setTabcat(mappedCategories);
+      console.log("tabcat:", tabcat);
+    }
+  }, [categories]);
+
   return (
     <div className="flex pb-1 justify-center items-center relative">
       <ul className="flex py-1 bg-[#d0d6dfa2] rounded-3xl items-center gap-4 flex-wrap w-auto px-1 justify-center">
         {currentCategTemp?.map((category) => (
           <li
             key={category.id}
-            className={`max-sm:text-sm  cursor-pointer hover:bg-blc  p-2 px-3 rounded-3xl ${activeCat === category.id ? "text-bl font-bold bg-[#ffffff] " : "text-mr"}`}
+            className={`max-sm:text-sm  cursor-pointer hover:bg-blc  p-2 px-3 rounded-3xl ${
+              activeCat === category.id
+                ? "text-bl font-bold bg-[#ffffff] "
+                : "text-mr"
+            }`}
             onClick={() => selectCat(category.id)}
           >
             {category.nom_categorie}
@@ -72,7 +106,9 @@ export const CategoriesList = ({ onSelectCategory }) => {
         ))}
         {categTemp?.length > nombreCat && (
           <li
-            className={`cursor-pointer flex items-center  ${showDropdown ? "font-bold text-blc bg-vr" : "text-bl font-bold"} p-2 px-3 rounded-3xl hover:scale-105 transition-all duration-500  `}
+            className={`cursor-pointer flex items-center  ${
+              showDropdown ? "font-bold text-blc bg-vr" : "text-bl font-bold"
+            } p-2 px-3 rounded-3xl hover:scale-105 transition-all duration-500  `}
             onClick={toggleDropdown}
           >
             Plus <BiCaretDown />
@@ -84,7 +120,11 @@ export const CategoriesList = ({ onSelectCategory }) => {
           {remainingCategTemp?.map((category) => (
             <li
               key={category.id}
-              className={`max-sm:text-sm text-nowrap cursor-pointer hover:bg-blc mb-1 p-2 px-3 rounded-xl ${activeCat === category.id ? "text-bl font-bold bg-[#ffffff] " : "text-mr"}`}
+              className={`max-sm:text-sm text-nowrap cursor-pointer hover:bg-blc mb-1 p-2 px-3 rounded-xl ${
+                activeCat === category.id
+                  ? "text-bl font-bold bg-[#ffffff] "
+                  : "text-mr"
+              }`}
               onClick={() => selectCat(category.id)}
             >
               {category.nom_categorie}

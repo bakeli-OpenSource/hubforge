@@ -4,16 +4,18 @@ import { CardesTemplate } from "./CardesTemplate";
 import { FooterPageAcueil } from "./FooterPageAcueil";
 import { TitrePage } from "./TitrePage";
 import { CategoriesList } from "./CategoriesList";
-import Search from "./SearchFuction/Search";
+import SearchModal from "./SearchFuction/SearchModal";
 
 export const PageAccueil = () => {
   const { darkMode, apiUrlImg } = useAppContext();
   const [selectCat, setSelectCat] = useState(null);
   const [selectTemp, setSelectTemp] = useState([]);
+
   const ClicCategory = (categoryId, t) => {
     setSelectCat(categoryId);
     setSelectTemp(t);
   };
+  
   return (
     <div
       className={`min-h-[screen] h-full max-w-[1610px] ${
@@ -24,7 +26,7 @@ export const PageAccueil = () => {
         <div>
           <TitrePage Effect={darkMode ? "text-blanc" : " text-bl"} />
         </div>
-          <Search/>
+        <SearchModal />
         <CategoriesList onSelectCategory={ClicCategory} />
         <div className="mt-8 flex justify-center w-full flex-wrap">
           {selectTemp.map((template) => (

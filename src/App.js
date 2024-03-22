@@ -15,6 +15,8 @@ import TelechargePage from "./components/Templates/TelechargePage";
 import ChompRestaurant from "./components/pageTemplate2/ChompRestaurant";
 import Ensemble from "./components/composPageAccueil/NewTemp2/Ensemble";
 import SEVI from "./components/NewTemp1/SEVI";
+import { Connexion } from "./pages/Connexion";
+import { Inscription } from "./pages/Inscription";
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
             <Route path="/template10" element={<PageTemplate4 />} />
             <Route path="/template11" element={<PageTemplate4 />} />
             <Route path="/dashbords" element={<TotalTemplates />} />
+            <Route path="/connexion" element={<Connexion />} />
+            <Route path="/inscription" element={<Inscription />} />
           </Routes>
         </BrowserRouter>
       </div>
