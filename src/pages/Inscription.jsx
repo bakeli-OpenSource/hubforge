@@ -8,12 +8,12 @@ import MonInput from "../components/Utils/MonInput";
 import MonBouton from "../components/Utils/MonBouton";
 import { BiLoaderCircle } from "react-icons/bi";
 import { FiAlertTriangle } from "react-icons/fi";
+import { useAppContext } from "../context/AppContext";
 
 export const Inscription = () => {
-  const [firstName, setFirstName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [accepterTerms, setAccepterTerms] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [PasswordError, setPasswordError] = useState("");
@@ -21,27 +21,24 @@ export const Inscription = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [firstNameError, setFirstNameError] = useState("");
+  const { apiUrlCat } = useAppContext();
 
-  const handleClick = async () => {
-    // try {
-    //   setLoading(true);
-    //   let data = {
-    //     email,
-    //     password,
-    //   };
-    //   const response = await AuthServices.loginUser(data);
-    //   console.log(response.data);
-    //   localStorage.setItem("hotelUser", JSON.stringify(response.data));
-    //   toast.success("Connexion reussie !");
-    //   navigate("/timeline/cartes", { replace: true });
-    //   window.history.replaceState(null, "", "/timeline/cartes");
-    //   setLoading(false);
-    // } catch (err) {
-    //   console.log(err);
-    //   toast.error("Veillez verifier vos identifianrs !");
-    //   setLoading(false);
-    // }
-  };
+
+   async function signUp() {
+     let item = { name, email, password };
+     console.log(item);
+     let result = await fetch(`${apiUrlCat}/register`, {
+       method: "POST",
+       body: JSON.stringify(item),
+       headers: {
+         "Content-Type": "application/json",
+         Accept: "application/json",
+       },
+     });
+     result = await result.json();
+     console.log("result", result);
+     navigate("/connexion");
+   }
 
   const btnStatus = () => {
     setMaskBtn(
@@ -67,10 +64,10 @@ export const Inscription = () => {
             label="Nom complet"
             type="text"
             id="nom"
-            value={firstName}
-            placeholder={"E-mail"}
+            value={name}
+            placeholder={"Nom Complet"}
             onChange={(e) => {
-              setFirstName(e.target.value);
+              setName(e.target.value);
               const Err = !e.target.value.trim() ? (
                 <>
                   <FiAlertTriangle className="me-2" /> Ce champ ne peut pas être
@@ -133,7 +130,7 @@ export const Inscription = () => {
               emailError !== "" || isLoading ? "hidden" : ""
             }`}
             couleurFond="bg-bl text-blc"
-            action={handleClick}
+            action={signUp}
             id={"connecter"}
             disabled={maskBtn}
           >

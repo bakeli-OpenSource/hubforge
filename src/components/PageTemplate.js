@@ -13,7 +13,7 @@ export const MonLink = ({ action, onClick, actionName, BgColor }) => {
     <Link
       to={action}
       onClick={onClick}
-      className={`  ${BgColor} w-full focus:scale-90  focus:bg-gr focus:border-2 transition-all duration-500 text-blanc  text-xl rounded-2xl flex items-center justify-center text-nowrap max-lg:text-sm font-bold h-[60px] px-5`}
+      className={`  ${BgColor} w-full focus:border-2 transition-all duration-500 text-blanc  text-xl rounded-2xl flex items-center justify-center text-nowrap max-lg:text-sm font-bold h-[60px] px-5`}
     >
       {actionName}
     </Link>
@@ -34,7 +34,7 @@ export const DetailsTemp = ({
       <a href={aprerçuTemp} target="_blank">
         <img
           src={imageTemp}
-          className={` rounded-2xl shadow-sm shadow-gray-30 ${Bordure} object-cover `}
+          className={` max-h-[500px] rounded-2xl shadow-sm shadow-gray-30 ${Bordure} object-cover `}
           alt="L'image du Template"
         />
       </a>
