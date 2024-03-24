@@ -1,20 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAppContext } from "../../../context/AppContext";
 import { IoIosSearch } from "react-icons/io";
 
-export default function SearchModal() {
+export default function SearchModal({ onSelectCategory, selectedCategoryId }) {
   const { darkMode, searchModalOpen, toggleSearchModal, tabcat } =
     useAppContext();
 
   const [searchValue, setSearchValue] = useState("");
+  const [activeCategory, setActiveCategory] = useState(null);
+  const landingPage = (t) => t.type_template === "landing_page";
+
+  useEffect(() => {
+    setActiveCategory(selectedCategoryId);
+  }, [selectedCategoryId]);
 
   const handleModalClose = () => {
     toggleSearchModal();
   };
 
   const handleSearchChange = (e) => {
-    setSearchValue(e.target.value); // Mettre à jour la valeur de recherche
+    setSearchValue(e.target.value);
   };
+
+  const handleCategoryClick = (categoryId) => {
+    if (onSelectCategory) {
+      const category = tabcat.find((cat) => cat.id === categoryId);
+      if (category) {
+        const filteredTemplates = category.templates.filter(landingPage);
+        onSelectCategory(categoryId, filteredTemplates);
+        setActiveCategory(categoryId);
+        toggleSearchModal();
+      } else {
+        console.error("Category not found");
+      }
+    } else {
+      console.error("onSelectCategory is not defined");
+    }
+  };
+
+
 
   // Filtrer les catégories en fonction de la valeur de recherche
   const filteredCategories = tabcat.filter((category) =>
@@ -50,7 +74,7 @@ export default function SearchModal() {
                   }`}
                   placeholder="Rechercher parmi nos catégories"
                   value={searchValue}
-                  onChange={handleSearchChange} // Gérer les changements de recherche
+                  onChange={handleSearchChange}
                 />
               </div>
             </form>
@@ -62,7 +86,10 @@ export default function SearchModal() {
                 {filteredCategories.map((category) => (
                   <span
                     key={category.id}
-                    className="w-full md:w-[90%] h-[40px] mx-auto my-2 flex justify-center items-center border rounded-lg hover:shadow-lg "
+                    className={`w-full md:w-[90%] h-[40px] mx-auto my-2 flex justify-center items-center border rounded-lg hover:shadow-lg ${
+                      activeCategory === category.id ? "bg-gray-300" : ""
+                    }`}
+                    onClick={() => handleCategoryClick(category.id)}
                   >
                     {category.nom_categorie}
                   </span>

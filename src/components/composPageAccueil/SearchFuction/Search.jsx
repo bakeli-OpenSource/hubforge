@@ -6,7 +6,7 @@ export default function Search() {
   const { darkMode, toggleDarkMode, toggleSearchModal } = useAppContext();
 
   const handleSearchClick = () => {
-    toggleSearchModal(); // Utilisez la fonction pour ouvrir/fermer le modal de recherche
+    toggleSearchModal();
   };
 
   return (
