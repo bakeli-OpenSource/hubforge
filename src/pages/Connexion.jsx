@@ -7,6 +7,7 @@ import MonBouton from "../components/Utils/MonBouton";
 import { BiLoaderCircle } from "react-icons/bi";
 import { FiAlertTriangle } from "react-icons/fi";
 import { useAppContext } from "../context/AppContext";
+import ModalPassword from "../components/Utils/ModalPassword";
 
 export const Connexion = () => {
   const [email, setEmail] = useState("");
@@ -16,6 +17,7 @@ export const Connexion = () => {
   const [emailError, setEmailError] = useState("");
   const [PasswordError, setPasswordError] = useState("");
   const [maskBtn, setMaskBtn] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { apiUrlCat } = useAppContext();
   let user = JSON.parse(localStorage.getItem("user-infos"))
@@ -42,8 +44,16 @@ export const Connexion = () => {
     navigate("/workerPage");
   }
 
+
   const btnStatus = () => {
     setMaskBtn(emailError !== "" || isLoading || PasswordError);
+  };
+  const HandleOpen = () => {
+    setOpenModal(true)
+  }
+  
+  const closePasswordModal = () => {
+    setOpenModal(false);
   };
 
   return (
