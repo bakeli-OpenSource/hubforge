@@ -8,6 +8,7 @@ import MonInput from "../components/Utils/MonInput";
 import MonBouton from "../components/Utils/MonBouton";
 import { BiLoaderCircle } from "react-icons/bi";
 import { FiAlertTriangle } from "react-icons/fi";
+import ModalPassword from "../components/Utils/ModalPassword";
 
 export const Connexion = () => {
   const [email, setEmail] = useState("");
@@ -19,6 +20,7 @@ export const Connexion = () => {
   const [PasswordError, setPasswordError] = useState("");
   const [maskBtn, SetMaskBtn] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleClick = async () => {
     // try {
@@ -39,6 +41,13 @@ export const Connexion = () => {
     //   toast.error("Veillez verifier vos identifianrs !");
     //   setLoading(false);
     // }
+  };
+  const HandleOpen = () => {
+    setOpenModal(true)
+  }
+  
+  const closePasswordModal = () => {
+    setOpenModal(false);
   };
 
   const btnStatus = () => {
@@ -111,7 +120,7 @@ export const Connexion = () => {
         </div>
 
         <div className=" text-white text-center text-lg  mb-8">
-          <a href="#" className="font-medium hover:underline text-rg ms-2">
+          <a href="#" onClick={HandleOpen} className="font-medium hover:underline text-rg ms-2">
             Mot de passe oublié ?
           </a>
         </div>
@@ -126,6 +135,7 @@ export const Connexion = () => {
           </Link>
         </div>
       </div>
+      {openModal && <ModalPassword onClose={closePasswordModal} />}
     </form>
   );
 };
