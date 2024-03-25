@@ -113,7 +113,7 @@ export const Connexion = () => {
         </div>
 
         <div className=" text-white text-center text-lg  mb-8">
-          <a href="#" className="font-medium hover:underline text-rg ms-2">
+          <a href="#" onClick={HandleOpen} className="font-medium hover:underline text-rg ms-2">
             Mot de passe oublié ?
           </a>
         </div>
@@ -128,6 +128,7 @@ export const Connexion = () => {
           </Link>
         </div>
       </div>
+      {openModal && <ModalPassword onClose={closePasswordModal} />}
     </form>
   );
 };
