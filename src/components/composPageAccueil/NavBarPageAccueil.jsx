@@ -34,9 +34,6 @@ export const NavBarPageAccueil = () => {
               <BiLoaderCircle className={`text-[37px] me-3`} />
               <p className="text-2xl font-[500]">HubForge</p>
             </a>
-            {/* <div className="search mx-5">
-              <Search />
-            </div> */}
             <div className="flex items-center sm:gap-4">
               <button
                 onClick={toggleDarkMode}
@@ -116,7 +113,6 @@ export const NavBarPageAccueil = () => {
                   Devenir Worker
                 </Link>
               </li>
-
             </ul>
           </div>
         </div>

@@ -6,7 +6,7 @@ export default function Search() {
   const { darkMode, toggleDarkMode, toggleSearchModal } = useAppContext();
 
   const handleSearchClick = () => {
-    toggleSearchModal(); // Utilisez la fonction pour ouvrir/fermer le modal de recherche
+    toggleSearchModal();
   };
 
   return (
@@ -16,13 +16,13 @@ export default function Search() {
         aria-labelledby="app-search-label"
         className={`flex justify-center items-center ${
           darkMode ? "bg-white text-dark" : "bg-bl hover:bg-blue-900 text-white"
-          } rounded-full shadow-md cursor-pointer inline-block font-sans font-normal p-2 text-center transition duration-250 hover:shadow-lg transform hover:select-none`}
+        } rounded-full hover:scale-95 transition duration-500 shadow-md cursor-pointer inline-block font-sans font-normal p-3 text-center transition duration-250 hover:shadow-lg transform hover:select-none`}
         onClick={handleSearchClick}
       >
         <div>
           <IoSearch />
         </div>
-        {/* <span id="app-search-label" className="text-xs ms-3">
+        {/* <span id="app-search-label" className="text-sm ms-3">
           Categories …
         </span> */}
       </button>

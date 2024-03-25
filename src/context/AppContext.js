@@ -16,6 +16,7 @@ export const AppProvider = ({ children }) => {
   
   const [loading, setLoading] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const [tabcat, setTabcat] = useState([]); // Ajoutez le state tabcat
 
   useEffect(() => {
     localStorage.setItem("darkMode", darkMode.toString());
@@ -29,6 +30,11 @@ export const AppProvider = ({ children }) => {
     setSearchModalOpen(!searchModalOpen);
   };
 
+  // Fonction pour mettre à jour tabcat
+  const updateTabcat = (categories) => {
+    setTabcat(categories);
+  };
+
   return (
     <QueryClientProvider client={queryClient}>
       <AppContext.Provider
@@ -40,11 +46,12 @@ export const AppProvider = ({ children }) => {
           apiUrlImg,
           apiUrl,
           loading,
-          setLoading,
           apiTel,
           apiUrlCat,
           searchModalOpen,
           toggleSearchModal,
+          tabcat, // Ajoutez tabcat au contexte
+          updateTabcat, // Fonction pour mettre à jour tabcat
         }}
       >
         {children}
@@ -54,7 +61,7 @@ export const AppProvider = ({ children }) => {
 };
 
 export const useAppContext = () => {
-  const ctx = useContext(AppContext)
-  if(!ctx) throw new Error("No context provided")
+  const ctx = useContext(AppContext);
+  if (!ctx) throw new Error("No context provided");
   return ctx;
 };

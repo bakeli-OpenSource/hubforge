@@ -17,6 +17,8 @@ import Ensemble from "./components/composPageAccueil/NewTemp2/Ensemble";
 import SEVI from "./components/NewTemp1/SEVI";
 import { Connexion } from "./pages/Connexion";
 import { Inscription } from "./pages/Inscription";
+import { WorkerPage } from "./components/Client/WorkerPage";
+import { ProtectedRoute } from "./Routes/ProtectedRoute";
 
 function App() {
   return (
@@ -29,20 +31,14 @@ function App() {
               path="/telecharge/:templateId"
               element={<TelechargePage />}
             />
-            <Route path="/template1" element={<RenduNewTemplate />} />
-            <Route path="/template2" element={<ChompRestaurant />} />
-            <Route path="/template3" element={<SEVI />} />
-            <Route path="/template4" element={<EnsembleTemp2 />} />
-            <Route path="/template5" element={<Aria />} />
-            <Route path="/template6" element={<Ampire />} />
-            <Route path="/template7" element={<Ensemble />} />
-            <Route path="/template8" element={<Alt />} />
-            <Route path="/template9" element={<PageTemplate4 />} />
-            <Route path="/template10" element={<PageTemplate4 />} />
-            <Route path="/template11" element={<PageTemplate4 />} />
             <Route path="/dashbords" element={<TotalTemplates />} />
+            {/*== Routes vers La partie Worker== */}
             <Route path="/connexion" element={<Connexion />} />
             <Route path="/inscription" element={<Inscription />} />
+            <Route
+              path="/workerPage"
+              element={<ProtectedRoute Cmp={WorkerPage} />}
+            />
           </Routes>
         </BrowserRouter>
       </div>

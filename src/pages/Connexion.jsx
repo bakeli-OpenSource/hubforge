@@ -1,48 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { LogoApplication } from "../components/LogoApplication";
-// import AuthServices from "../services/authServices";
 // import { toast } from "react-toastify";
 import { ScaleLoader } from "react-spinners";
 import MonInput from "../components/Utils/MonInput";
 import MonBouton from "../components/Utils/MonBouton";
 import { BiLoaderCircle } from "react-icons/bi";
 import { FiAlertTriangle } from "react-icons/fi";
+import { useAppContext } from "../context/AppContext";
+import ModalPassword from "../components/Utils/ModalPassword";
 
 export const Connexion = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [accepterTerms, setAccepterTerms] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [emailError, setEmailError] = useState("");
   const [PasswordError, setPasswordError] = useState("");
   const [maskBtn, setMaskBtn] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { apiUrlCat } = useAppContext();
+  let user = JSON.parse(localStorage.getItem("user-infos"))
 
-  const handleClick = async () => {
-    // try {
-    //   setLoading(true);
-    //   let data = {
-    //     email,
-    //     password,
-    //   };
-    //   const response = await AuthServices.loginUser(data);
-    //   console.log(response.data);
-    //   localStorage.setItem("hotelUser", JSON.stringify(response.data));
-    //   toast.success("Connexion reussie !");
-    //   navigate("/timeline/cartes", { replace: true });
-    //   window.history.replaceState(null, "", "/timeline/cartes");
-    //   setLoading(false);
-    // } catch (err) {
-    //   console.log(err);
-    //   toast.error("Veillez verifier vos identifianrs !");
-    //   setLoading(false);
-    // }
-  };
+  useEffect(() => {
+    if (user) {
+      navigate("/workerPage");
+    }
+  }, []);
+
+  async function login() {
+    let item = { email, password };
+    console.log(password, email);
+    let result = await fetch(`${apiUrlCat}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(item),
+    });
+    result = await result.json();
+    localStorage.setItem("user-infos", JSON.stringify(result));
+    navigate("/workerPage");
+  }
+
 
   const btnStatus = () => {
     setMaskBtn(emailError !== "" || isLoading || PasswordError);
+  };
+  const HandleOpen = () => {
+    setOpenModal(true)
+  }
+  
+  const closePasswordModal = () => {
+    setOpenModal(false);
   };
 
   return (
@@ -102,7 +113,8 @@ export const Connexion = () => {
               emailError !== "" || isLoading ? "hidden" : ""
             }`}
             couleurFond="bg-bl text-blc"
-            action={handleClick}
+            action={login}
+
             id={"connecter"}
             disabled={maskBtn}
           >
@@ -111,7 +123,7 @@ export const Connexion = () => {
         </div>
 
         <div className=" text-white text-center text-lg  mb-8">
-          <a href="#" className="font-medium hover:underline text-rg ms-2">
+          <a href="#" onClick={HandleOpen} className="font-medium hover:underline text-rg ms-2">
             Mot de passe oublié ?
           </a>
         </div>
@@ -126,6 +138,7 @@ export const Connexion = () => {
           </Link>
         </div>
       </div>
+      {openModal && <ModalPassword onClose={closePasswordModal} />}
     </form>
   );
 };

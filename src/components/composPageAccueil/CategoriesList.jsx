@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useAppContext } from "../../context/AppContext";
 import { useCategories } from "../../hook/useCategories";
 import { BiCaretDown } from "react-icons/bi";
 
-export const CategoriesList = ({ onSelectCategory }) => {
+export const CategoriesList = ({ onSelectCategory, selectedCategoryId }) => {
   const categoryTemp = useCategories(onSelectCategory);
   const categories = categoryTemp?.categories;
   const [activeCat, setActiveCat] = useState(null);
@@ -10,6 +11,18 @@ export const CategoriesList = ({ onSelectCategory }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [nombreCat, setNombreCat] = useState(3);
   const landingPage = (t) => t.type_template === "landing_page";
+
+  // Création du tableau contenant la liste des catégories present "tabcat"
+  const [tabcat, setTabcat] = useState([]);
+  const { updateTabcat } = useAppContext();
+  useEffect(() => {
+    setTabcat(categories);
+    if (categories) {
+      updateTabcat(categories);
+    }
+  }, [categories, updateTabcat]);
+
+  console.log("tabcat:", tabcat);
 
   useEffect(() => {
     const resize = () => {
@@ -35,12 +48,13 @@ export const CategoriesList = ({ onSelectCategory }) => {
       }
     }
   }, [categories, onSelectCategory, activeCat]);
+  // console.log("tester", categories);
 
 
   const selectCat = (catId) => {
+    setActiveCat(catId);
     const clicCat = categories.find((cat) => cat.id === catId);
     const selectTemp = clicCat ? clicCat.templates.filter(landingPage) : [];
-    setActiveCat(catId);
     onSelectCategory(catId, selectTemp);
   };
 
@@ -58,6 +72,21 @@ export const CategoriesList = ({ onSelectCategory }) => {
   const toggleDropdown = () => {
     setShowDropdown((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (categories) {
+      const mappedCategories = categories.map((category) => ({
+        id: category.id,
+        nom_categorie: category.nom_categorie,
+      }));
+      setTabcat(mappedCategories);
+      console.log("tabcat:", tabcat);
+    }
+  }, [categories]);
+
+  useEffect(() => {
+    setActiveCat(selectedCategoryId); // Mettre à jour activeCat avec la nouvelle catégorie sélectionnée
+  }, [selectedCategoryId]);
 
   return (
     <div className="flex pb-1 justify-center items-center relative">

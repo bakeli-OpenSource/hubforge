@@ -14,6 +14,7 @@ const TelechargePage = () => {
   const [clickCounts, setClickCounts] = useState(0);
   const { apiUrlImg } = useAppContext();
   const { data: templates } = useTemplates();
+  const [isScaled, setIsScaled] = useState(false);
 
   const Data = templates?.find(
     (template) => template.id === Number(templateId)
@@ -24,7 +25,13 @@ const TelechargePage = () => {
     if (tel && tel.length > 0 && clic === null) {
       setClic(tel[0].id);
     }
-  }, [tel, clic]);
+    if (isScaled) {
+      const timer = setTimeout(() => {
+        setIsScaled(false);
+      }, 1300);
+      return () => clearTimeout(timer);
+    }
+  }, [tel, clic, isScaled]);
 
   const typeSelect = (type) => {
     setClic((prev) => (prev === type ? null : type));
@@ -63,13 +70,14 @@ const TelechargePage = () => {
                     <MonLink
                       action={t.telechargement}
                       actionName={`Télécharger ${t.type_code}`}
-                      BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
+                      BgColor={`${isScaled ? "scale-90 focus:bg-gr" : ""}  ${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
                       onClick={() => {
                         setClickCounts(clickCounts + 1);
                         postClicMutation.mutate({
                           type_telechargement_id: clic,
                           nom_type_telechargement: Data.nom,
                         });
+                        setIsScaled(true);
                       }}
                     />
                   </div>
@@ -121,13 +129,14 @@ const TelechargePage = () => {
                     <MonLink
                       action={t.telechargement}
                       actionName={`Télécharger ${t.type_code}`}
-                      BgColor={`${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
+                      BgColor={` ${isScaled ? "scale-90 focus:bg-gr" : ""}  ${t.id % 2 === 0 ? "bg-rg" : "bg-vr"}`}
                       onClick={() => {
                         setClickCounts(clickCounts + 1);
                         postClicMutation.mutate({
                           type_telechargement_id: clic,
                           nom_type_telechargement: Data.nom,
                         });
+                        setIsScaled(true);
                       }}
                     />
                   </div>

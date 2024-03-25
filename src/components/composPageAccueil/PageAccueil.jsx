@@ -10,11 +10,19 @@ export const PageAccueil = () => {
   const { darkMode, apiUrlImg } = useAppContext();
   const [selectCat, setSelectCat] = useState(null);
   const [selectTemp, setSelectTemp] = useState([]);
+  const [activeCat, setActiveCat] = useState(null);
 
   const ClicCategory = (categoryId, t) => {
     setSelectCat(categoryId);
     setSelectTemp(t);
   };
+
+  const handleSelectCategory = (categoryId, templates) => {
+    setActiveCat(categoryId);
+    setSelectTemp(templates);
+  };
+
+
   return (
     <div
       className={`min-h-[screen] h-full max-w-[1610px] ${
@@ -25,8 +33,15 @@ export const PageAccueil = () => {
         <div>
           <TitrePage Effect={darkMode ? "text-blanc" : " text-bl"} />
         </div>
-        <SearchModal/>
-        <CategoriesList onSelectCategory={ClicCategory} />
+        <SearchModal
+          selectedCategoryId={activeCat}
+          onSelectCategory={handleSelectCategory}
+        />
+        <CategoriesList
+          onSelectCategory={ClicCategory}
+          selectedCategoryId={activeCat}
+        />{" "}
+        {/* Passez activeCat comme prop */}
         <div className="mt-8 flex justify-center w-full flex-wrap">
           {selectTemp.map((template) => (
             <CardesTemplate
@@ -49,3 +64,5 @@ export const PageAccueil = () => {
     </div>
   );
 };
+
+export default PageAccueil;
