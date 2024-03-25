@@ -116,7 +116,7 @@ export const NavBarPageAccueil = () => {
                   Devenir Worker
                 </Link>
               </li>
-
+              <Search />
             </ul>
           </div>
         </div>
