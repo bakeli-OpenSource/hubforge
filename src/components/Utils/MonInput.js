@@ -12,7 +12,7 @@ const MonInput = ({
   MessageError,
   labelStyle,
 }) => {
-  if (type === "select") {
+  if (type === "select" && options) {
     return (
       <div className="mt-4">
         <label htmlFor={id} className={`${labelStyle} text-gray-500`}>
@@ -20,11 +20,16 @@ const MonInput = ({
         </label>
         <select
           id={id}
-          className={` custom-select text-black text-opacity-90 ${paddingB} border-gr focus:border-vr px-2 rounded-xl py-3 border focus:outline-none w-full`}
+          className={`custom-select text-black text-opacity-90 ${paddingB} border-gr focus:border-vr px-2 rounded-xl py-3 border focus:outline-none w-full`}
           aria-label={label}
           value={value}
           onChange={onChange}
         >
+          {/* Option vide pour le placeholder */}
+          <option value="" disabled={!value}>
+            {placeholder}
+          </option>
+          {/* Afficher les autres options */}
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -34,9 +39,9 @@ const MonInput = ({
       </div>
     );
   } else {
-    // Autres Types d'Inputs
+    // Autres types d'inputs
     return (
-      <div className="mt-4">
+      <div className="mt-4 flex flex-col">
         <label htmlFor={id} className={`${labelStyle} text-gray-500`}>
           {label}
         </label>
@@ -58,5 +63,6 @@ const MonInput = ({
     );
   }
 };
+
 
 export default MonInput;

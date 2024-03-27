@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useAppContext } from "../../../context/AppContext";
 import { IoIosSearch } from "react-icons/io";
+import { TiDelete } from "react-icons/ti";
+
+// Fonction pour supprimer les accents d'une chaîne de caractères
+function removeAccents(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
 
 export default function SearchModal({ onSelectCategory, selectedCategoryId }) {
   const { darkMode, searchModalOpen, toggleSearchModal, tabcat } =
@@ -30,6 +36,8 @@ export default function SearchModal({ onSelectCategory, selectedCategoryId }) {
         onSelectCategory(categoryId, filteredTemplates);
         setActiveCategory(categoryId);
         toggleSearchModal();
+        // Retirer le focus de l'élément sélectionné
+        document.activeElement.blur();
       } else {
         console.error("Category not found");
       }
@@ -38,11 +46,11 @@ export default function SearchModal({ onSelectCategory, selectedCategoryId }) {
     }
   };
 
-
-
-  // Filtrer les catégories en fonction de la valeur de recherche
+  // Filtrer les catégories en fonction de la valeur de recherche (avec suppression des accents)
   const filteredCategories = tabcat.filter((category) =>
-    category.nom_categorie.toLowerCase().includes(searchValue.toLowerCase())
+    removeAccents(category.nom_categorie.toLowerCase()).includes(
+      removeAccents(searchValue.toLowerCase())
+    )
   );
 
   return (
@@ -54,9 +62,21 @@ export default function SearchModal({ onSelectCategory, selectedCategoryId }) {
           onClick={handleModalClose}
         >
           <div
-            className={`myModal w-full lg:w-[45%] md:w-[95%] bg-white p-4 rounded-lg shadow-lg`}
+            className={`myModal w-full lg:w-[45%] md:w-[95%] p-4 rounded-lg shadow-lg ${
+              darkMode
+                ? "bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-vr focus:border-vr"
+                : "bg-gray-50 border-gray-300"
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
+            <div className="flex justify-end cursor-pointer">
+              <span
+                className="px-2 rounded-full bg-reed-500"
+                onClick={handleModalClose}
+              >
+                <TiDelete className="text-xl" />
+              </span>
+            </div>
             {/* Barre de recherche */}
             <form className="max-w-xl mx-auto mb-3 ">
               <div className="relative">
@@ -66,7 +86,7 @@ export default function SearchModal({ onSelectCategory, selectedCategoryId }) {
                 <input
                   type="search"
                   id="default-search"
-                  className={`block  w-full p-4x py-2.5 ps-10 text-sm border rounded-lg  focus:ring focus:border-vr 
+                  className={`block  w-full px-4 py-2.5 ps-10 text-sm border rounded-lg  focus:ring focus:border-vr 
                   ${
                     darkMode
                       ? "bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-vr focus:border-vr"
@@ -82,17 +102,19 @@ export default function SearchModal({ onSelectCategory, selectedCategoryId }) {
 
             {/* Liste des categories recherchées */}
             {searchValue && (
-              <div className="searchCategories">
+              <div className="searchCategories cursor-pointer">
                 {filteredCategories.map((category) => (
-                  <span
-                    key={category.id}
-                    className={`w-full md:w-[90%] h-[40px] mx-auto my-2 flex justify-center items-center border rounded-lg hover:shadow-lg ${
+                  <p
+                    key={category.id === activeCategory ? "active" : ""}
+                    className={`categorie cursor-pointer w-full md:w-[90%] h-[40px] mx-auto my-2 px-4 flex justify-start items-center border rounded-lg hover:shadow-lg ${
                       activeCategory === category.id ? "bg-gray-300" : ""
                     }`}
                     onClick={() => handleCategoryClick(category.id)}
                   >
-                    {category.nom_categorie}
-                  </span>
+                    <span className={`cursor-pointer `}>
+                      {category.nom_categorie}
+                    </span>
+                  </p>
                 ))}
               </div>
             )}

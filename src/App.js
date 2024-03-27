@@ -18,6 +18,7 @@ import SEVI from "./components/NewTemp1/SEVI";
 import { Connexion } from "./pages/Connexion";
 import { Inscription } from "./pages/Inscription";
 import { WorkerPage } from "./components/Client/WorkerPage";
+import WorkerForm from "./components/Client/AddForm";
 import { ProtectedRoute } from "./Routes/ProtectedRoute";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
               path="/workerPage"
               element={<ProtectedRoute Cmp={WorkerPage} />}
             />
+            <Route path="/addForm" element={<WorkerForm />} />
           </Routes>
         </BrowserRouter>
       </div>
