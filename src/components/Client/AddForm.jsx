@@ -1,10 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { useAppContext } from "../../context/AppContext";
 import MonInput from "../Utils/MonInput";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import RichEditor from "./RichEditor";
 
 export default function AddForm() {
   const { darkMode } = useAppContext();
+  const [wysiwygForms, setWysiwygForms] = useState([<WysiwygForm key={1} />]);
+  const [formIdCounter, setFormIdCounter] = useState(1);
+
+  const handleAddWysiwygForm = () => {
+    const newFormId = formIdCounter + 1;
+    setFormIdCounter(newFormId);
+    const newForms = [
+      ...wysiwygForms,
+      <WysiwygForm
+        key={newFormId}
+        onDelete={() => handleDeleteWysiwygForm(newFormId)}
+        formKey={newFormId}
+      />,
+    ];
+    setWysiwygForms(newForms);
+  };
+
+  const handleDeleteWysiwygForm = (index) => {
+    const updatedForms = [...wysiwygForms];
+    updatedForms.splice(index, 1);
+    setWysiwygForms(updatedForms);
+  };
+
+  function WysiwygForm({ formKey, onDelete }) {
+    const handleDeleteClick = () => {
+      onDelete(formKey);
+    };
+
+    return (
+      <>
+        <div className="flex flex-col gap-3 mt-3 py-4 px-6 rounded-tl-xl rounded-tr-xl border border-gray">
+          <div className="flex items-center gap-3">
+            <div className="grid flex-1 gap-y-1 justify-end">
+              <p
+                className={`overflow-hidden break-words text-sm  ${
+                  darkMode ? "text-white" : "text-gray-500"
+                }`}
+              >
+                <RiDeleteBin6Line
+                  className="h-5 w-5 text-red-500 cursor-pointer"
+                  onClick={handleDeleteClick}
+                />
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="p-3 border border-gray flex flex-column">
+          {/* <RichEditor /> */}
+          WYSIWYG
+        </div>
+      </>
+    );
+  }
 
   return (
     <main className={`flex flex-col gap-y-8 py-8`}>
@@ -173,7 +227,7 @@ export default function AddForm() {
                 <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <p
-                      className={`text-sm tracking-tight ${
+                      className={`text-sm font-bold tracking-tight ${
                         darkMode ? "text-gray-500" : "text-gray-950"
                       } p-2`}
                     >
@@ -183,33 +237,61 @@ export default function AddForm() {
                 </header>
                 <div className="wysiwyg flex flex-wrap justify-between">
                   {/* Formulaire de wysiwyg */}
-                  <div className="w-full md:w-1/2 flex item-center justify-center">
-                    <div className="w-[95%]">
-                      <div className="flex flex-col gap-3 mt-3 py-4 px-6 rounded-tl-xl rounded-tr-xl border border-gray">
-                        <div className="flex items-center gap-3">
-                          <div className="grid flex-1 gap-y-1 justify-end">
-                            <p
-                              className={`overflow-hidden break-words text-sm  ${
-                                darkMode ? "text-white" : "text-gray-500"
-                              }`}
-                            >
-                              <RiDeleteBin6Line className="h-5 w-5 text-red-500" />
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-3 border border-gray flex flex-column">
-                        EDITEUR WYSIWYG ICI
+                  {wysiwygForms.map((index) => (
+                    <div
+                      key={index}
+                      className="w-full md:w-1/2 flex item-center justify-center"
+                    >
+                      <div className="w-[98%]">
+                        <WysiwygForm
+                          formKey={index}
+                          onDelete={handleDeleteWysiwygForm}
+                        />
                       </div>
                     </div>
-                  </div>
+                  ))}
                   {/* Fin Formulaire de wysiwyg */}
+                </div>
+                <div className="flex justify-center my-4 mx-3">
+                  <button
+                    className="grid-flow-col items-center justify-center font-semibold outline-none transition duration-75 focus-visible:ring-2 rounded-lg gap-1 px-2.5 py-1.5 text-sm inline-grid shadow-md text-gray-950 hover:bg-gray-50 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 ring-1 ring-gray-950/10 dark:ring-white/20 border border-gray"
+                    type="button"
+                    onClick={handleAddWysiwygForm}
+                  >
+                    <span className="text-gray-950">
+                      Ajouter un types de Téléchargements
+                    </span>
+                  </button>
                 </div>
               </div>
             </div>
           </form>
         </div>
       </section>
+
+      <footer className="gap-3 flex flex-wrap items-center justify-start mx-6">
+        <button
+          className="grid-flow-col items-center justify-center font-semibold outline-none transition duration-75 focus-visible:ring-2 rounded-lg gap-1.5 px-3 py-2 text-sm inline-grid shadow-xl bg-[#4F46FE] text-white hover:bg-custom-500 focus-visible:ring-custom-500/50 dark:bg-custom-500 dark:hover:bg-custom-400 dark:focus-visible:ring-custom-400/50 border border-gray"
+          type="submit"
+        >
+          <span className="text-white">Créer</span>
+          <span className="" style={{ display: "none" }}></span>
+        </button>
+
+        <button
+          className="grid-flow-col items-center justify-center font-semibold outline-none transition duration-75 focus-visible:ring-2 rounded-lg gap-1.5 px-3 py-2 text-sm inline-grid shadow-xl bg-white text-gray-950 hover:bg-gray-50 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 ring-1 ring-gray-950/10 dark:ring-white/20 border border-gray"
+          type="button"
+        >
+          <span className="text-gray-950">Créer &amp; Ajouter un autre</span>
+        </button>
+
+        <button
+          className="grid-flow-col items-center justify-center font-semibold outline-none transition duration-75 focus-visible:ring-2 rounded-lg gap-1.5 px-3 py-2 text-sm inline-grid shadow-xl bg-white text-gray-950 hover:bg-gray-50 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 ring-1 ring-gray-950/10 dark:ring-white/20 border border-gray"
+          type="button"
+        >
+          <span className="text-gray-950">Annuler</span>
+        </button>
+      </footer>
     </main>
   );
 }
